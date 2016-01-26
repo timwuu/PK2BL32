@@ -1,0 +1,1776 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<DeviceFile>
+  <xs:schema id="DeviceFile" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="DeviceFile" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Info">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="VersionMajor" type="xs:int" minOccurs="0" />
+                <xs:element name="VersionMinor" type="xs:int" minOccurs="0" />
+                <xs:element name="VersionDot" type="xs:int" minOccurs="0" />
+                <xs:element name="VersionNotes" type="xs:string" minOccurs="0" />
+                <xs:element name="NumberFamilies" type="xs:int" minOccurs="0" />
+                <xs:element name="NumberParts" type="xs:int" minOccurs="0" />
+                <xs:element name="NumberScripts" type="xs:int" minOccurs="0" />
+                <xs:element name="Compatibility" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UNUSED1A" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UNUSED1B" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UNUSED2" type="xs:unsignedInt" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Families">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FamilyID" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="FamilyType" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="SearchPriority" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="FamilyName" type="xs:string" minOccurs="0" />
+                <xs:element name="ProgEntryScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgExitScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ReadDevIDScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DeviceIDMask" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="BlankValue" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="BytesPerLocation" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="AddressIncrement" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="PartDetect" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ProgEntryVPPScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UNUSED1" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEMemBytesPerWord" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="EEMemAddressIncrement" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UserIDHexBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UserIDBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemHexBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="EEMemHexBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemShift" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="TestMemoryStart" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="TestMemoryLength" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="Vpp" type="xs:float" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PartsList">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PartName" type="xs:string" minOccurs="0" />
+                <xs:element name="Family" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DeviceID" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ProgramMem" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="EEMem" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEAddr" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ConfigWords" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ConfigAddr" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="UserIDWords" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UserIDAddr" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="BandGapMask" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ConfigMasks" msdata:DataType="System.UInt16[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                <xs:element name="ConfigBlank" msdata:DataType="System.UInt16[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                <xs:element name="CPMask" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="CPConfig" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="OSSCALSave" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IgnoreAddress" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="VddMin" type="xs:float" minOccurs="0" />
+                <xs:element name="VddMax" type="xs:float" minOccurs="0" />
+                <xs:element name="VddErase" type="xs:float" minOccurs="0" />
+                <xs:element name="CalibrationWords" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ChipEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemAddrSetScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemAddrBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemRdWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERdPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERdLocations" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDRdPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigRdPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemWrWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemPanelBufs" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemPanelOffset" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="EEWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEWrLocations" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="OSCCALRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="OSCCALWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DPMask" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="WriteCfgOnErase" type="xs:boolean" minOccurs="0" />
+                <xs:element name="BlankCheckSkipUsrIDs" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IgnoreBytes" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ChipErasePrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="BootFlash" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="Config9Mask" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="Config9Blank" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEMemEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigMemEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="reserved1EraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="reserved2EraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="TestMemoryRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="TestMemoryRdWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERowEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERowEraseWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ExportToMPLAB" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DebugHaltScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugRunScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugStatusScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReadExecVerScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugSingleStepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugBulkWrDataScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugBulkRdDataScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugWriteVectorScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReadVectorScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugRowEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugRowEraseSize" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved5Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved6Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved7Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved8Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="LVPScript" type="xs:unsignedShort" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Scripts">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ScriptNumber" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ScriptName" type="xs:string" minOccurs="0" />
+                <xs:element name="ScriptVersion" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UNUSED1" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ScriptLength" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="Script" msdata:DataType="System.UInt16[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                <xs:element name="Comment" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Info>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>61</VersionMinor>
+    <VersionDot>0</VersionDot>
+    <VersionNotes>
+      18F97J60 prog mem wr script corrected.
+
+      Add PIC32MX340F512H
+    </VersionNotes>
+    <NumberFamilies>19</NumberFamilies>
+    <NumberParts>548</NumberParts>
+    <NumberScripts>276</NumberScripts>
+    <Compatibility>6</Compatibility>
+    <UNUSED1A>0</UNUSED1A>
+    <UNUSED1B>0</UNUSED1B>
+    <UNUSED2>0</UNUSED2>
+  </Info>
+  <Families>
+    <FamilyID>0</FamilyID>
+    <FamilyType>1</FamilyType>
+    <SearchPriority>9</SearchPriority>
+    <FamilyName>Midrange/Standard</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>3</ReadDevIDScript>
+    <DeviceIDMask>16352</DeviceIDMask>
+    <BlankValue>16383</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>182</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>2</EEMemBytesPerWord>
+    <EEMemAddressIncrement>1</EEMemAddressIncrement>
+    <UserIDHexBytes>2</UserIDHexBytes>
+    <UserIDBytes>2</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>2</EEMemHexBytes>
+    <ProgMemShift>1</ProgMemShift>
+    <TestMemoryStart>16384</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>12</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>1</FamilyID>
+    <FamilyType>7</FamilyType>
+    <SearchPriority>0</SearchPriority>
+    <FamilyName>PIC24</FamilyName>
+    <ProgEntryScript>21</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>22</ReadDevIDScript>
+    <DeviceIDMask>65535</DeviceIDMask>
+    <BlankValue>16777215</BlankValue>
+    <BytesPerLocation>3</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>2</EEMemBytesPerWord>
+    <EEMemAddressIncrement>2</EEMemAddressIncrement>
+    <UserIDHexBytes>4</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>4</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>2</FamilyID>
+    <FamilyType>0</FamilyType>
+    <SearchPriority>12</SearchPriority>
+    <FamilyName>Baseline</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>0</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>4095</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>2</EEMemBytesPerWord>
+    <EEMemAddressIncrement>1</EEMemAddressIncrement>
+    <UserIDHexBytes>2</UserIDHexBytes>
+    <UserIDBytes>2</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>2</EEMemHexBytes>
+    <ProgMemShift>1</ProgMemShift>
+    <TestMemoryStart>2048</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>12.5</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>3</FamilyID>
+    <FamilyType>4</FamilyType>
+    <SearchPriority>10</SearchPriority>
+    <FamilyName>PIC18F</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>55</ReadDevIDScript>
+    <DeviceIDMask>65520</DeviceIDMask>
+    <BlankValue>65535</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>229</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>1</EEMemBytesPerWord>
+    <EEMemAddressIncrement>1</EEMemAddressIncrement>
+    <UserIDHexBytes>1</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>1</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>2097152</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>12</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>4</FamilyID>
+    <FamilyType>5</FamilyType>
+    <SearchPriority>1</SearchPriority>
+    <FamilyName>PIC18F_J_</FamilyName>
+    <ProgEntryScript>70</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>55</ReadDevIDScript>
+    <DeviceIDMask>65504</DeviceIDMask>
+    <BlankValue>65535</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>5</FamilyID>
+    <FamilyType>8</FamilyType>
+    <SearchPriority>2</SearchPriority>
+    <FamilyName>dsPIC33</FamilyName>
+    <ProgEntryScript>21</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>22</ReadDevIDScript>
+    <DeviceIDMask>65535</DeviceIDMask>
+    <BlankValue>16777215</BlankValue>
+    <BytesPerLocation>3</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>4</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>4</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>6</FamilyID>
+    <FamilyType>6</FamilyType>
+    <SearchPriority>8</SearchPriority>
+    <FamilyName>PIC18F_K_</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>55</ReadDevIDScript>
+    <DeviceIDMask>65504</DeviceIDMask>
+    <BlankValue>65535</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>182</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>1</EEMemBytesPerWord>
+    <EEMemAddressIncrement>1</EEMemAddressIncrement>
+    <UserIDHexBytes>1</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>1</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>2097152</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>8.5</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>7</FamilyID>
+    <FamilyType>9</FamilyType>
+    <SearchPriority>11</SearchPriority>
+    <FamilyName>dsPIC30</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>140</ReadDevIDScript>
+    <DeviceIDMask>65535</DeviceIDMask>
+    <BlankValue>16777215</BlankValue>
+    <BytesPerLocation>3</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>2</EEMemBytesPerWord>
+    <EEMemAddressIncrement>2</EEMemAddressIncrement>
+    <UserIDHexBytes>4</UserIDHexBytes>
+    <UserIDBytes>3</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>4</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>12</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>8</FamilyID>
+    <FamilyType>10</FamilyType>
+    <SearchPriority>4</SearchPriority>
+    <FamilyName>dsPIC30 SMPS</FamilyName>
+    <ProgEntryScript>21</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>22</ReadDevIDScript>
+    <DeviceIDMask>65535</DeviceIDMask>
+    <BlankValue>16777215</BlankValue>
+    <BytesPerLocation>3</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>4</UserIDHexBytes>
+    <UserIDBytes>3</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>4</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>9</FamilyID>
+    <FamilyType>12</FamilyType>
+    <SearchPriority>13</SearchPriority>
+    <FamilyName>KEELOQ® HCS</FamilyName>
+    <ProgEntryScript>183</ProgEntryScript>
+    <ProgExitScript>183</ProgExitScript>
+    <ReadDevIDScript>0</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>255</BlankValue>
+    <BytesPerLocation>1</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>1</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>10</FamilyID>
+    <FamilyType>14</FamilyType>
+    <SearchPriority>15</SearchPriority>
+    <FamilyName>EEPROMS/24LC</FamilyName>
+    <ProgEntryScript>191</ProgEntryScript>
+    <ProgExitScript>192</ProgExitScript>
+    <ReadDevIDScript>0</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>255</BlankValue>
+    <BytesPerLocation>1</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>1</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>11</FamilyID>
+    <FamilyType>15</FamilyType>
+    <SearchPriority>16</SearchPriority>
+    <FamilyName>EEPROMS/25LC</FamilyName>
+    <ProgEntryScript>201</ProgEntryScript>
+    <ProgExitScript>202</ProgExitScript>
+    <ReadDevIDScript>0</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>255</BlankValue>
+    <BytesPerLocation>1</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>1</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>12</FamilyID>
+    <FamilyType>16</FamilyType>
+    <SearchPriority>17</SearchPriority>
+    <FamilyName>EEPROMS/93LCxA,C</FamilyName>
+    <ProgEntryScript>207</ProgEntryScript>
+    <ProgExitScript>192</ProgExitScript>
+    <ReadDevIDScript>202</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>255</BlankValue>
+    <BytesPerLocation>1</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>1</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>13</FamilyID>
+    <FamilyType>17</FamilyType>
+    <SearchPriority>18</SearchPriority>
+    <FamilyName>EEPROMS/93LCxB,C</FamilyName>
+    <ProgEntryScript>207</ProgEntryScript>
+    <ProgExitScript>192</ProgExitScript>
+    <ReadDevIDScript>202</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>65535</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>14</FamilyID>
+    <FamilyType>2</FamilyType>
+    <SearchPriority>7</SearchPriority>
+    <FamilyName>Midrange/1.8V Min</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>3</ReadDevIDScript>
+    <DeviceIDMask>16352</DeviceIDMask>
+    <BlankValue>16383</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>182</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>2</EEMemBytesPerWord>
+    <EEMemAddressIncrement>1</EEMemAddressIncrement>
+    <UserIDHexBytes>2</UserIDHexBytes>
+    <UserIDBytes>2</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>2</EEMemHexBytes>
+    <ProgMemShift>1</ProgMemShift>
+    <TestMemoryStart>65536</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>8.5</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>15</FamilyID>
+    <FamilyType>13</FamilyType>
+    <SearchPriority>14</SearchPriority>
+    <FamilyName>EEPROMS/11LC</FamilyName>
+    <ProgEntryScript>238</ProgEntryScript>
+    <ProgExitScript>192</ProgExitScript>
+    <ReadDevIDScript>0</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>255</BlankValue>
+    <BytesPerLocation>1</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>1</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>16</FamilyID>
+    <FamilyType>11</FamilyType>
+    <SearchPriority>5</SearchPriority>
+    <FamilyName>PIC32</FamilyName>
+    <ProgEntryScript>243</ProgEntryScript>
+    <ProgExitScript>244</ProgExitScript>
+    <ReadDevIDScript>245</ReadDevIDScript>
+    <DeviceIDMask>268431360</DeviceIDMask>
+    <BlankValue>4294967295</BlankValue>
+    <BytesPerLocation>4</BytesPerLocation>
+    <AddressIncrement>4</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>1</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>17</FamilyID>
+    <FamilyType>18</FamilyType>
+    <SearchPriority>19</SearchPriority>
+    <FamilyName>MCP250xx</FamilyName>
+    <ProgEntryScript>182</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>0</ReadDevIDScript>
+    <DeviceIDMask>0</DeviceIDMask>
+    <BlankValue>13567</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>false</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>0</UserIDHexBytes>
+    <UserIDBytes>0</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>1</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>13</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>18</FamilyID>
+    <FamilyType>19</FamilyType>
+    <SearchPriority>3</SearchPriority>
+    <FamilyName>dsPIC33EP</FamilyName>
+    <ProgEntryScript>21</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>279</ReadDevIDScript>
+    <DeviceIDMask>65535</DeviceIDMask>
+    <BlankValue>16777215</BlankValue>
+    <BytesPerLocation>3</BytesPerLocation>
+    <AddressIncrement>2</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>4</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>4</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>19</FamilyID>
+    <FamilyType>3</FamilyType>
+    <SearchPriority>6</SearchPriority>
+    <FamilyName>Midrange/1.8V Min+</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>290</ReadDevIDScript>
+    <DeviceIDMask>16383</DeviceIDMask>
+    <BlankValue>16383</BlankValue>
+    <BytesPerLocation>2</BytesPerLocation>
+    <AddressIncrement>1</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>182</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>2</EEMemBytesPerWord>
+    <EEMemAddressIncrement>1</EEMemAddressIncrement>
+    <UserIDHexBytes>2</UserIDHexBytes>
+    <UserIDBytes>2</UserIDBytes>
+    <ProgMemHexBytes>2</ProgMemHexBytes>
+    <EEMemHexBytes>2</EEMemHexBytes>
+    <ProgMemShift>1</ProgMemShift>
+    <TestMemoryStart>65536</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>8.5</Vpp>
+  </Families>
+  <PartsList>
+    <PartName>PIC18LF25K50</PartName>
+    <Family>6</Family>
+    <DeviceID>23712</DeviceID>
+    <ProgramMem>16384</ProgramMem>
+    <EEMem>256</EEMem>
+    <EEAddr>15728640</EEAddr>
+    <ConfigWords>7</ConfigWords>
+    <ConfigAddr>3145728</ConfigAddr>
+    <UserIDWords>8</UserIDWords>
+    <UserIDAddr>2097152</UserIDAddr>
+    <BandGapMask>0</BandGapMask>
+    <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>61243</unsignedShort>
+      <unsignedShort>16223</unsignedShort>
+      <unsignedShort>54016</unsignedShort>
+      <unsignedShort>229</unsignedShort>
+      <unsignedShort>49167</unsignedShort>
+      <unsignedShort>57359</unsignedShort>
+      <unsignedShort>16399</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigMasks>
+    <ConfigBlank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>9472</unsignedShort>
+      <unsignedShort>16223</unsignedShort>
+      <unsignedShort>54016</unsignedShort>
+      <unsignedShort>165</unsignedShort>
+      <unsignedShort>49167</unsignedShort>
+      <unsignedShort>57359</unsignedShort>
+      <unsignedShort>16399</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigBlank>
+    <CPMask>16399</CPMask>
+    <CPConfig>5</CPConfig>
+    <OSSCALSave>false</OSSCALSave>
+    <IgnoreAddress>0</IgnoreAddress>
+    <VddMin>2.5</VddMin>
+    <VddMax>3.3</VddMax>
+    <VddErase>2.5</VddErase>
+    <CalibrationWords>0</CalibrationWords>
+    <ChipEraseScript>277</ChipEraseScript>
+    <ProgMemAddrSetScript>57</ProgMemAddrSetScript>
+    <ProgMemAddrBytes>3</ProgMemAddrBytes>
+    <ProgMemRdScript>56</ProgMemRdScript>
+    <ProgMemRdWords>64</ProgMemRdWords>
+    <EERdPrepScript>97</EERdPrepScript>
+    <EERdScript>98</EERdScript>
+    <EERdLocations>32</EERdLocations>
+    <UserIDRdPrepScript>0</UserIDRdPrepScript>
+    <UserIDRdScript>61</UserIDRdScript>
+    <ConfigRdPrepScript>0</ConfigRdPrepScript>
+    <ConfigRdScript>60</ConfigRdScript>
+    <ProgMemWrPrepScript>63</ProgMemWrPrepScript>
+    <ProgMemWrScript>104</ProgMemWrScript>
+    <ProgMemWrWords>32</ProgMemWrWords>
+    <ProgMemPanelBufs>0</ProgMemPanelBufs>
+    <ProgMemPanelOffset>0</ProgMemPanelOffset>
+    <EEWrPrepScript>99</EEWrPrepScript>
+    <EEWrScript>100</EEWrScript>
+    <EEWrLocations>1</EEWrLocations>
+    <UserIDWrPrepScript>0</UserIDWrPrepScript>
+    <UserIDWrScript>65</UserIDWrScript>
+    <ConfigWrPrepScript>66</ConfigWrPrepScript>
+    <ConfigWrScript>236</ConfigWrScript>
+    <OSCCALRdScript>0</OSCCALRdScript>
+    <OSCCALWrScript>0</OSCCALWrScript>
+    <DPMask>32768</DPMask>
+    <WriteCfgOnErase>false</WriteCfgOnErase>
+    <BlankCheckSkipUsrIDs>false</BlankCheckSkipUsrIDs>
+    <IgnoreBytes>0</IgnoreBytes>
+    <ChipErasePrepScript>0</ChipErasePrepScript>
+    <BootFlash>0</BootFlash>
+    <Config9Mask>0</Config9Mask>
+    <Config9Blank>0</Config9Blank>
+    <ProgMemEraseScript>278</ProgMemEraseScript>
+    <EEMemEraseScript>0</EEMemEraseScript>
+    <ConfigMemEraseScript>0</ConfigMemEraseScript>
+    <reserved1EraseScript>0</reserved1EraseScript>
+    <reserved2EraseScript>0</reserved2EraseScript>
+    <TestMemoryRdScript>135</TestMemoryRdScript>
+    <TestMemoryRdWords>8</TestMemoryRdWords>
+    <EERowEraseScript>0</EERowEraseScript>
+    <EERowEraseWords>0</EERowEraseWords>
+    <ExportToMPLAB>true</ExportToMPLAB>
+    <DebugHaltScript>14</DebugHaltScript>
+    <DebugRunScript>16</DebugRunScript>
+    <DebugStatusScript>20</DebugStatusScript>
+    <DebugReadExecVerScript>15</DebugReadExecVerScript>
+    <DebugSingleStepScript>19</DebugSingleStepScript>
+    <DebugBulkWrDataScript>17</DebugBulkWrDataScript>
+    <DebugBulkRdDataScript>18</DebugBulkRdDataScript>
+    <DebugWriteVectorScript>170</DebugWriteVectorScript>
+    <DebugReadVectorScript>171</DebugReadVectorScript>
+    <DebugRowEraseScript>0</DebugRowEraseScript>
+    <DebugRowEraseSize>0</DebugRowEraseSize>
+    <DebugReserved5Script>0</DebugReserved5Script>
+    <DebugReserved6Script>0</DebugReserved6Script>
+    <DebugReserved7Script>0</DebugReserved7Script>
+    <DebugReserved8Script>0</DebugReserved8Script>
+    <LVPScript>70</LVPScript>
+  </PartsList>
+  <PartsList>
+    <PartName>dsPIC33EP256MC202</PartName>
+    <Family>18</Family>
+    <DeviceID>8033</DeviceID>
+    <ProgramMem>88054</ProgramMem>
+    <EEMem>0</EEMem>
+    <EEAddr>0</EEAddr>
+    <ConfigWords>6</ConfigWords>
+    <ConfigAddr>352224</ConfigAddr>
+    <UserIDWords>0</UserIDWords>
+    <UserIDAddr>16785392</UserIDAddr>
+    <BandGapMask>0</BandGapMask>
+    <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>171</unsignedShort>
+      <unsignedShort>248</unsignedShort>
+      <unsignedShort>255</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>199</unsignedShort>
+      <unsignedShort>3</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigMasks>
+    <ConfigBlank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>171</unsignedShort>
+      <unsignedShort>248</unsignedShort>
+      <unsignedShort>255</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>199</unsignedShort>
+      <unsignedShort>3</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigBlank>
+    <CPMask>3</CPMask>
+    <CPConfig>6</CPConfig>
+    <OSSCALSave>false</OSSCALSave>
+    <IgnoreAddress>0</IgnoreAddress>
+    <VddMin>3.0</VddMin>
+    <VddMax>3.6</VddMax>
+    <VddErase>3.0</VddErase>
+    <CalibrationWords>0</CalibrationWords>
+    <ChipEraseScript>281</ChipEraseScript>
+    <ProgMemAddrSetScript>283</ProgMemAddrSetScript>
+    <ProgMemAddrBytes>3</ProgMemAddrBytes>
+    <ProgMemRdScript>282</ProgMemRdScript>
+    <ProgMemRdWords>32</ProgMemRdWords>
+    <EERdPrepScript>0</EERdPrepScript>
+    <EERdScript>0</EERdScript>
+    <EERdLocations>0</EERdLocations>
+    <UserIDRdPrepScript>0</UserIDRdPrepScript>
+    <UserIDRdScript>285</UserIDRdScript>
+    <ConfigRdPrepScript>0</ConfigRdPrepScript>
+    <ConfigRdScript>284</ConfigRdScript>
+    <ProgMemWrPrepScript>286</ProgMemWrPrepScript>
+    <ProgMemWrScript>287</ProgMemWrScript>
+    <ProgMemWrWords>2</ProgMemWrWords>
+    <ProgMemPanelBufs>0</ProgMemPanelBufs>
+    <ProgMemPanelOffset>0</ProgMemPanelOffset>
+    <EEWrPrepScript>0</EEWrPrepScript>
+    <EEWrScript>0</EEWrScript>
+    <EEWrLocations>0</EEWrLocations>
+    <UserIDWrPrepScript>286</UserIDWrPrepScript>
+    <UserIDWrScript>124</UserIDWrScript>
+    <ConfigWrPrepScript>286</ConfigWrPrepScript>
+    <ConfigWrScript>288</ConfigWrScript>
+    <OSCCALRdScript>0</OSCCALRdScript>
+    <OSCCALWrScript>0</OSCCALWrScript>
+    <DPMask>0</DPMask>
+    <WriteCfgOnErase>false</WriteCfgOnErase>
+    <BlankCheckSkipUsrIDs>true</BlankCheckSkipUsrIDs>
+    <IgnoreBytes>0</IgnoreBytes>
+    <ChipErasePrepScript>0</ChipErasePrepScript>
+    <BootFlash>0</BootFlash>
+    <Config9Mask>0</Config9Mask>
+    <Config9Blank>0</Config9Blank>
+    <ProgMemEraseScript>0</ProgMemEraseScript>
+    <EEMemEraseScript>0</EEMemEraseScript>
+    <ConfigMemEraseScript>0</ConfigMemEraseScript>
+    <reserved1EraseScript>0</reserved1EraseScript>
+    <reserved2EraseScript>0</reserved2EraseScript>
+    <TestMemoryRdScript>0</TestMemoryRdScript>
+    <TestMemoryRdWords>0</TestMemoryRdWords>
+    <EERowEraseScript>0</EERowEraseScript>
+    <EERowEraseWords>0</EERowEraseWords>
+    <ExportToMPLAB>true</ExportToMPLAB>
+    <DebugHaltScript>14</DebugHaltScript>
+    <DebugRunScript>16</DebugRunScript>
+    <DebugStatusScript>20</DebugStatusScript>
+    <DebugReadExecVerScript>15</DebugReadExecVerScript>
+    <DebugSingleStepScript>19</DebugSingleStepScript>
+    <DebugBulkWrDataScript>17</DebugBulkWrDataScript>
+    <DebugBulkRdDataScript>18</DebugBulkRdDataScript>
+    <DebugWriteVectorScript>289</DebugWriteVectorScript>
+    <DebugReadVectorScript>0</DebugReadVectorScript>
+    <DebugRowEraseScript>0</DebugRowEraseScript>
+    <DebugRowEraseSize>0</DebugRowEraseSize>
+    <DebugReserved5Script>0</DebugReserved5Script>
+    <DebugReserved6Script>0</DebugReserved6Script>
+    <DebugReserved7Script>0</DebugReserved7Script>
+    <DebugReserved8Script>0</DebugReserved8Script>
+    <LVPScript>0</LVPScript>
+  </PartsList>
+  <PartsList>
+    <PartName>PIC16F1459</PartName>
+    <Family>19</Family>
+    <DeviceID>12323</DeviceID>
+    <ProgramMem>8064</ProgramMem>
+    <EEMem>0</EEMem>
+    <EEAddr>0</EEAddr>
+    <ConfigWords>2</ConfigWords>
+    <ConfigAddr>65550</ConfigAddr>
+    <UserIDWords>4</UserIDWords>
+    <UserIDAddr>65536</UserIDAddr>
+    <BandGapMask>0</BandGapMask>
+    <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>16127</unsignedShort>
+      <unsignedShort>16371</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigMasks>
+    <ConfigBlank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>16383</unsignedShort>
+      <unsignedShort>16383</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigBlank>
+    <CPMask>128</CPMask>
+    <CPConfig>1</CPConfig>
+    <OSSCALSave>false</OSSCALSave>
+    <IgnoreAddress>0</IgnoreAddress>
+    <VddMin>2.7</VddMin>
+    <VddMax>5</VddMax>
+    <VddErase>2.7</VddErase>
+    <CalibrationWords>2</CalibrationWords>
+    <ChipEraseScript>4</ChipEraseScript>
+    <ProgMemAddrSetScript>230</ProgMemAddrSetScript>
+    <ProgMemAddrBytes>0</ProgMemAddrBytes>
+    <ProgMemRdScript>5</ProgMemRdScript>
+    <ProgMemRdWords>32</ProgMemRdWords>
+    <EERdPrepScript>0</EERdPrepScript>
+    <EERdScript>6</EERdScript>
+    <EERdLocations>32</EERdLocations>
+    <UserIDRdPrepScript>0</UserIDRdPrepScript>
+    <UserIDRdScript>7</UserIDRdScript>
+    <ConfigRdPrepScript>0</ConfigRdPrepScript>
+    <ConfigRdScript>34</ConfigRdScript>
+    <ProgMemWrPrepScript>0</ProgMemWrPrepScript>
+    <ProgMemWrScript>32</ProgMemWrScript>
+    <ProgMemWrWords>8</ProgMemWrWords>
+    <ProgMemPanelBufs>0</ProgMemPanelBufs>
+    <ProgMemPanelOffset>0</ProgMemPanelOffset>
+    <EEWrPrepScript>0</EEWrPrepScript>
+    <EEWrScript>10</EEWrScript>
+    <EEWrLocations>1</EEWrLocations>
+    <UserIDWrPrepScript>0</UserIDWrPrepScript>
+    <UserIDWrScript>33</UserIDWrScript>
+    <ConfigWrPrepScript>0</ConfigWrPrepScript>
+    <ConfigWrScript>35</ConfigWrScript>
+    <OSCCALRdScript>0</OSCCALRdScript>
+    <OSCCALWrScript>260</OSCCALWrScript>
+    <DPMask>256</DPMask>
+    <WriteCfgOnErase>false</WriteCfgOnErase>
+    <BlankCheckSkipUsrIDs>false</BlankCheckSkipUsrIDs>
+    <IgnoreBytes>0</IgnoreBytes>
+    <ChipErasePrepScript>0</ChipErasePrepScript>
+    <BootFlash>0</BootFlash>
+    <Config9Mask>0</Config9Mask>
+    <Config9Blank>0</Config9Blank>
+    <ProgMemEraseScript>110</ProgMemEraseScript>
+    <EEMemEraseScript>0</EEMemEraseScript>
+    <ConfigMemEraseScript>172</ConfigMemEraseScript>
+    <reserved1EraseScript>0</reserved1EraseScript>
+    <reserved2EraseScript>0</reserved2EraseScript>
+    <TestMemoryRdScript>132</TestMemoryRdScript>
+    <TestMemoryRdWords>8</TestMemoryRdWords>
+    <EERowEraseScript>0</EERowEraseScript>
+    <EERowEraseWords>0</EERowEraseWords>
+    <ExportToMPLAB>false</ExportToMPLAB>
+    <DebugHaltScript>14</DebugHaltScript>
+    <DebugRunScript>16</DebugRunScript>
+    <DebugStatusScript>20</DebugStatusScript>
+    <DebugReadExecVerScript>15</DebugReadExecVerScript>
+    <DebugSingleStepScript>19</DebugSingleStepScript>
+    <DebugBulkWrDataScript>17</DebugBulkWrDataScript>
+    <DebugBulkRdDataScript>18</DebugBulkRdDataScript>
+    <DebugWriteVectorScript>261</DebugWriteVectorScript>
+    <DebugReadVectorScript>74</DebugReadVectorScript>
+    <DebugRowEraseScript>0</DebugRowEraseScript>
+    <DebugRowEraseSize>0</DebugRowEraseSize>
+    <DebugReserved5Script>0</DebugReserved5Script>
+    <DebugReserved6Script>0</DebugReserved6Script>
+    <DebugReserved7Script>0</DebugReserved7Script>
+    <DebugReserved8Script>0</DebugReserved8Script>
+    <LVPScript>266</LVPScript>
+  </PartsList>
+
+  <Scripts>
+    <ScriptNumber>277</ScriptNumber>
+    <ScriptName>18F_ChpErase.x3F8F</ScriptName>
+    <ScriptVersion>1</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>50</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47932</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48120</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48119</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47877</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48118</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43758</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47884</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47935</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47935</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48118</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43758</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47884</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>48015</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>48015</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>43758</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>43752</unsignedShort>
+      <unsignedShort>47875</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+    </Script>
+    <Comment>
+      writes 0x3F8F to 0x3C.00.04 - 05
+
+      P11 = 15ms
+    </Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>278</ScriptNumber>
+    <ScriptName>18F_PMemErase.xF83</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>50</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47932</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48120</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48119</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47877</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48118</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43758</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47884</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47887</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47887</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47886</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>48118</unsignedShort>
+      <unsignedShort>47982</unsignedShort>
+      <unsignedShort>43758</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47884</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>48003</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>48003</unsignedShort>
+      <unsignedShort>43738</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>43758</unsignedShort>
+      <unsignedShort>47876</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>43752</unsignedShort>
+      <unsignedShort>47875</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+      <unsignedShort>43762</unsignedShort>
+      <unsignedShort>47872</unsignedShort>
+    </Script>
+    <Comment>
+      writes 0x0F83 to 0x3C.00.04 - 05
+      erases all except EE
+      P11 = 15ms
+    </Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>279</ScriptNumber>
+    <ScriptName>dsPIC33EP Read Device ID</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>48</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>240</unsignedShort>
+      <unsignedShort>15</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>160</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>7</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>182</unsignedShort>
+      <unsignedShort>11</unsignedShort>
+      <unsignedShort>186</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>64</unsignedShort>
+      <unsignedShort>124</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>215</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>16</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+    </Script>
+    <Comment>read dsPIC33EP device ID</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>280</ScriptNumber>
+    <ScriptName>dsPIC33EP ProgMemWrite Aux</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>10</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+    </Script>
+    <Comment>Program Memory Write Aux</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>281</ScriptNumber>
+    <ScriptName>Chip Erase User Memory</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>45</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>218</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>36</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>74</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>81</unsignedShort>
+      <unsignedShort>5</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>113</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>161</unsignedShort>
+      <unsignedShort>10</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>113</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>41</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>168</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>232</unsignedShort>
+      <unsignedShort>80</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>282</ScriptNumber>
+    <ScriptName>Prog Mem Read</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>39</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>150</unsignedShort>
+      <unsignedShort>11</unsignedShort>
+      <unsignedShort>186</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>215</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>182</unsignedShort>
+      <unsignedShort>139</unsignedShort>
+      <unsignedShort>186</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+      <unsignedShort>242</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>214</unsignedShort>
+      <unsignedShort>239</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>26</unsignedShort>
+      <unsignedShort>31</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>283</ScriptNumber>
+    <ScriptName>Addr Set</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>23</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>212</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>211</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>160</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>135</unsignedShort>
+      <unsignedShort>248</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>284</ScriptNumber>
+    <ScriptName>Config Read</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>57</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>160</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>255</unsignedShort>
+      <unsignedShort>42</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>7</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>182</unsignedShort>
+      <unsignedShort>11</unsignedShort>
+      <unsignedShort>186</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>64</unsignedShort>
+      <unsignedShort>124</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>215</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>16</unsignedShort>
+      <unsignedShort>5</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>285</ScriptNumber>
+    <ScriptName>User ID Read</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>53</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>8</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>160</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>134</unsignedShort>
+      <unsignedShort>255</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>7</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>182</unsignedShort>
+      <unsignedShort>11</unsignedShort>
+      <unsignedShort>186</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>64</unsignedShort>
+      <unsignedShort>124</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+      <unsignedShort>242</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>214</unsignedShort>
+      <unsignedShort>239</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>22</unsignedShort>
+      <unsignedShort>3</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>286</ScriptNumber>
+    <ScriptName>ProgMemory Write Prep</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>58</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>26</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>36</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>74</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>84</unsignedShort>
+      <unsignedShort>5</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>165</unsignedShort>
+      <unsignedShort>10</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>160</unsignedShort>
+      <unsignedShort>15</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>160</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>212</unsignedShort>
+      <unsignedShort>11</unsignedShort>
+      <unsignedShort>211</unsignedShort>
+      <unsignedShort>12</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>108</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>72</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>169</unsignedShort>
+      <unsignedShort>114</unsignedShort>
+      <unsignedShort>32</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>139</unsignedShort>
+      <unsignedShort>12</unsignedShort>
+      <unsignedShort>120</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>287</ScriptNumber>
+    <ScriptName>Prog Memory Write</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>60</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>128</unsignedShort>
+      <unsignedShort>3</unsignedShort>
+      <unsignedShort>235</unsignedShort>
+      <unsignedShort>212</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>211</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>128</unsignedShort>
+      <unsignedShort>11</unsignedShort>
+      <unsignedShort>187</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>129</unsignedShort>
+      <unsignedShort>155</unsignedShort>
+      <unsignedShort>187</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>16</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>116</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>117</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>41</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>168</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>153</unsignedShort>
+      <unsignedShort>12</unsignedShort>
+      <unsignedShort>68</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>288</ScriptNumber>
+    <ScriptName>Config Memory Write</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>59</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>128</unsignedShort>
+      <unsignedShort>3</unsignedShort>
+      <unsignedShort>235</unsignedShort>
+      <unsignedShort>212</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>212</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>128</unsignedShort>
+      <unsignedShort>27</unsignedShort>
+      <unsignedShort>187</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>129</unsignedShort>
+      <unsignedShort>11</unsignedShort>
+      <unsignedShort>187</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>116</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>117</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>41</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>168</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>153</unsignedShort>
+      <unsignedShort>12</unsignedShort>
+      <unsignedShort>68</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>56</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>289</ScriptNumber>
+    <ScriptName>Erase PE and User ID</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>47</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>58</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>36</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>74</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>116</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>117</unsignedShort>
+      <unsignedShort>57</unsignedShort>
+      <unsignedShort>136</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>41</unsignedShort>
+      <unsignedShort>231</unsignedShort>
+      <unsignedShort>168</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>232</unsignedShort>
+      <unsignedShort>80</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>2</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>217</unsignedShort>
+      <unsignedShort>43</unsignedShort>
+      <unsignedShort>103</unsignedShort>
+      <unsignedShort>168</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>216</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>34</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>290</ScriptNumber>
+    <ScriptName>Midrange/1.8V Min+ Read Device ID</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>24</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>242</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>242</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>3</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>240</unsignedShort>
+      <unsignedShort>240</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>8</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+</DeviceFile>
