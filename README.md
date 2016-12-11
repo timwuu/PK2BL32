@@ -21,3 +21,9 @@ PICkit2V2S1: modified version to use COM Port to talk to PICkit 2
    - HC-06 COM Port: COM4, defined in BT.cs
    - Use "Release" mode to run app
    - CmdLog.txt, CmdLogScript.txt: logs of commands
+
+This version can also support the following PICs by swapping the PK2DeviceFile.xml file.
+   - some of PIC32MXs
+   - dsPIC33EP256MC202
+   - PIC16F1459
+   - PIC18LF25K50
