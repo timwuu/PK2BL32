@@ -1,0 +1,8 @@
+*.cache
+*.dll
+*.exe
+PICkit2V2S1/PICkit2V2/obj
+PICkit2V2S1/PICkit2V2/bin/Release/CmdLogScript.txt
+PICkit2V2S1/PICkit2V2/bin/Release/CmdLog.txt
+PICkit2V2S1/PICkit2V2/bin/Release/PICkit2V2.pdb
+*.cache

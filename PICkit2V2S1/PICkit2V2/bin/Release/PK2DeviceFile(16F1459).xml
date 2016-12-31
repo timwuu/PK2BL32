@@ -953,8 +953,8 @@
     <ConfigRdPrepScript>0</ConfigRdPrepScript>
     <ConfigRdScript>34</ConfigRdScript>
     <ProgMemWrPrepScript>0</ProgMemWrPrepScript>
-    <ProgMemWrScript>32</ProgMemWrScript>
-    <ProgMemWrWords>8</ProgMemWrWords>
+    <ProgMemWrScript>291</ProgMemWrScript>
+    <ProgMemWrWords>32</ProgMemWrWords>
     <ProgMemPanelBufs>0</ProgMemPanelBufs>
     <ProgMemPanelOffset>0</ProgMemPanelOffset>
     <EEWrPrepScript>0</EEWrPrepScript>
@@ -1772,5 +1772,41 @@
       <unsignedShort>1</unsignedShort>
     </Script>
     <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+  <ScriptNumber>291</ScriptNumber>
+  <ScriptName>MR_PrgMemWr32Int.1</ScriptName>
+  <ScriptVersion>0</ScriptVersion>
+  <UNUSED1>0</UNUSED1>
+  <ScriptLength>24</ScriptLength>
+  <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47874</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47874</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43753</unsignedShort>
+  <unsignedShort>47880</unsignedShort>
+  <unsignedShort>47902</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47880</unsignedShort>
+  <unsignedShort>43751</unsignedShort>
+  <unsignedShort>141</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  </Script>
+  <Comment>
+  Wr x32 int timed 3ms. LdPrgMem(02), AdrInc(06), BeginPrg(08)
+  </Comment>
   </Scripts>
 </DeviceFile>
