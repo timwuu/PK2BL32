@@ -221,6 +221,7 @@ namespace PICkit2V2
         public const byte _JT2_XFERINST_BUF     = 0xB6;
         public const byte _JT2_GET_PE_RESP      = 0xB5;
         public const byte _JT2_WAIT_PE_RESP     = 0xB4;
+        public const byte _JT2_PE_PROG_RESP     = 0xB3;   // timijk 2017.02.05
         //
         public const int SEARCH_ALL_FAMILIES = 0xFFFFFF;
         //

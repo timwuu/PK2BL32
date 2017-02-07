@@ -10,6 +10,7 @@ using System.IO;
 using System.IO.Ports;
 using File = System.IO.File;
 using P32 = PICkit2V2.PIC32MXFunctions;
+using P32MM = PICkit2V2.PIC32MMFunctions;
 using DTBL = System.Data.DataTable;
 using System.Data;
 
@@ -544,6 +545,26 @@ namespace PICkit2V2
                 maxLength = 5;
             }
             return (DevFile.Families[GetActiveFamily()].FamilyName.Substring(0, maxLength) == "PIC32");
+        }
+
+        public static bool FamilyIsPIC32MX()
+        {
+            int maxLength = DevFile.Families[GetActiveFamily()].FamilyName.Length;
+            if (maxLength > 7)
+            {
+                maxLength = 7;
+            }
+            return (DevFile.Families[GetActiveFamily()].FamilyName.Substring(0, maxLength) == "PIC32MX");
+        }
+
+        public static bool FamilyIsPIC32MM()
+        {
+            int maxLength = DevFile.Families[GetActiveFamily()].FamilyName.Length;
+            if (maxLength > 7)
+            {
+                maxLength = 7;
+            }
+            return (DevFile.Families[GetActiveFamily()].FamilyName.Substring(0, maxLength) == "PIC32MM");
         }
 
         public static bool FamilyIsdsPIC30()
@@ -3062,8 +3083,12 @@ namespace PICkit2V2
             //1.8V Min+
             //if (familyIndex != 0x13) return false;
 
-            //PIC32 
+            //PIC32MX 
             //if (familyIndex != 0x10) return false;
+
+            //PIC32MM 
+            if (familyIndex != 0x14) return false;
+
             //PIC18F_K_ if (familyIndex != 0x06) return false;
             //XXyy timijk 2015.06.08 dsPIC33EP 
             //if (familyIndex != 18) return false;
@@ -3192,9 +3217,10 @@ namespace PICkit2V2
             deviceID &= DevFile.Families[familyIndex].DeviceIDMask; // mask off version bits.
             LastDeviceID = deviceID;
 
-            if (deviceID == 0x3023)
+            if (deviceID == 0x06B12000)   //timijk PIC32MM0064GPL028
             {
                 LastDeviceID = deviceID;
+                LastDeviceRev = LastDeviceRev >> 8;
             }
 
             // Search through the device file to see if we find the part

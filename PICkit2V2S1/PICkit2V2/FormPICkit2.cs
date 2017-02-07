@@ -10,7 +10,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices; // DllImport
 using Pk2 = PICkit2V2.PICkitFunctions;
-using P32 = PICkit2V2.PIC32MXFunctions;
+using P32MX = PICkit2V2.PIC32MXFunctions;
+using P32MM = PICkit2V2.PIC32MMFunctions;
 using KONST = PICkit2V2.Constants;
 using UTIL = PICkit2V2.Utilities;
 
@@ -535,9 +536,14 @@ namespace PICkit2V2
             }
 
             // assign delegates
-            P32.UpdateStatusWinText = new DelegateStatusWin(this.StatusWinWr);
-            P32.ResetStatusBar = new DelegateResetStatusBar(this.ResetStatusBar);
-            P32.StepStatusBar = new DelegateStepStatusBar(this.StepStatusBar);
+            P32MX.UpdateStatusWinText = new DelegateStatusWin(this.StatusWinWr);
+            P32MX.ResetStatusBar = new DelegateResetStatusBar(this.ResetStatusBar);
+            P32MX.StepStatusBar = new DelegateStepStatusBar(this.StepStatusBar);
+
+            // timijk 2017.02.06
+            P32MM.UpdateStatusWinText = new DelegateStatusWin(this.StatusWinWr);
+            P32MM.ResetStatusBar = new DelegateResetStatusBar(this.ResetStatusBar);
+            P32MM.StepStatusBar = new DelegateStepStatusBar(this.StepStatusBar);
 
             PICmicro.UpdateStatusWinText = new DelegateStatusWin(this.StatusWinWr);
             PICmicro.ResetStatusBar = new DelegateResetStatusBar(this.ResetStatusBar);
@@ -2883,9 +2889,9 @@ namespace PICkit2V2
                 return ; // abort
             }
             
-            if (Pk2.FamilyIsPIC32())
+            if (Pk2.FamilyIsPIC32MX())
             {
-                if (P32.PIC32Read())
+                if (P32MX.PIC32Read())
                 {
                     statusWindowColor = Constants.StatusColor.normal;
                 }
@@ -2897,7 +2903,23 @@ namespace PICkit2V2
                 updateGUI(KONST.UpdateMemoryDisplays);
                 return;
             }
-            
+
+            if (Pk2.FamilyIsPIC32MM())
+            {
+                if (P32MM.PIC32Read())
+                {
+                    statusWindowColor = Constants.StatusColor.normal;
+                }
+                else
+                {
+                    statusWindowColor = Constants.StatusColor.red;
+                }
+                conditionalVDDOff();
+                updateGUI(KONST.UpdateMemoryDisplays);
+                return;
+            }
+
+
             displayStatusWindow.Text = "Reading device:\n";
             //displayStatusWindow.Update();
             this.Update();
@@ -3557,9 +3579,9 @@ namespace PICkit2V2
                 }
             }
 
-            if (Pk2.FamilyIsPIC32())
+            if (Pk2.FamilyIsPIC32MX())
             {
-                if (P32.P32Write(verifyOnWriteToolStripMenuItem.Checked, enableCodeProtectToolStripMenuItem.Checked))
+                if (P32MX.P32Write(verifyOnWriteToolStripMenuItem.Checked, enableCodeProtectToolStripMenuItem.Checked))
                 {
                     statusWindowColor = Constants.StatusColor.green;
                     conditionalVDDOff();
@@ -3573,7 +3595,25 @@ namespace PICkit2V2
                     updateGUI(KONST.UpdateMemoryDisplays);
                     return true;
                 }
-            }            
+            }
+
+            if (Pk2.FamilyIsPIC32MM())
+            {
+                if (P32MM.P32Write(verifyOnWriteToolStripMenuItem.Checked, enableCodeProtectToolStripMenuItem.Checked))
+                {
+                    statusWindowColor = Constants.StatusColor.green;
+                    conditionalVDDOff();
+                    updateGUI(KONST.UpdateMemoryDisplays);
+                    return true;
+                }
+                else
+                {
+                    statusWindowColor = Constants.StatusColor.red;
+                    conditionalVDDOff();
+                    updateGUI(KONST.UpdateMemoryDisplays);
+                    return true;
+                }
+            }
 
             Pk2.SetMCLRTemp(true);     // assert /MCLR to prevent code execution before programming mode entered.
             Pk2.VddOn();
@@ -4311,9 +4351,9 @@ namespace PICkit2V2
                 return false; // abort
             }
 
-            if (Pk2.FamilyIsPIC32())
+            if (Pk2.FamilyIsPIC32MX())
             {
-                if (P32.PIC32BlankCheck())
+                if (P32MX.PIC32BlankCheck())
                 {
                     statusWindowColor = Constants.StatusColor.green;
                     conditionalVDDOff();
@@ -4327,7 +4367,25 @@ namespace PICkit2V2
                     updateGUI(KONST.UpdateMemoryDisplays);
                     return true;
                 }
-            }            
+            }
+
+            if (Pk2.FamilyIsPIC32MM())
+            {
+                if (P32MM.PIC32BlankCheck())
+                {
+                    statusWindowColor = Constants.StatusColor.green;
+                    conditionalVDDOff();
+                    updateGUI(KONST.UpdateMemoryDisplays);
+                    return true;
+                }
+                else
+                {
+                    statusWindowColor = Constants.StatusColor.red;
+                    conditionalVDDOff();
+                    updateGUI(KONST.UpdateMemoryDisplays);
+                    return true;
+                }
+            }
 
             DeviceData blankDevice = new DeviceData(Pk2.DevFile.PartsList[Pk2.ActivePart].ProgramMem,
                 Pk2.DevFile.PartsList[Pk2.ActivePart].EEMem,
@@ -4854,9 +4912,9 @@ namespace PICkit2V2
                 }
             }
 
-            if (Pk2.FamilyIsPIC32())
+            if (Pk2.FamilyIsPIC32MX())
             {
-                if (P32.P32Verify(writeVerify, enableCodeProtectToolStripMenuItem.Checked))
+                if (P32MX.P32Verify(writeVerify, enableCodeProtectToolStripMenuItem.Checked))
                 {
                     statusWindowColor = Constants.StatusColor.green;
                     conditionalVDDOff();
@@ -4870,7 +4928,25 @@ namespace PICkit2V2
                     updateGUI(KONST.UpdateMemoryDisplays);
                     return true;
                 }
-            } 
+            }
+
+            if (Pk2.FamilyIsPIC32MM())
+            {
+                if (P32MM.P32Verify(writeVerify, enableCodeProtectToolStripMenuItem.Checked))
+                {
+                    statusWindowColor = Constants.StatusColor.green;
+                    conditionalVDDOff();
+                    updateGUI(KONST.UpdateMemoryDisplays);
+                    return true;
+                }
+                else
+                {
+                    statusWindowColor = Constants.StatusColor.red;
+                    conditionalVDDOff();
+                    updateGUI(KONST.UpdateMemoryDisplays);
+                    return true;
+                }
+            }
 
             displayStatusWindow.Text = "Verifying Device:\n";
             //displayStatusWindow.Update();

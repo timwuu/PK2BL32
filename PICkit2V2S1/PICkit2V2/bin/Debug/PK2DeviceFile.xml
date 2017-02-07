@@ -175,7 +175,7 @@
   <Families>
     <FamilyID>0</FamilyID>
     <FamilyType>1</FamilyType>
-    <SearchPriority>9</SearchPriority>
+    <SearchPriority>10</SearchPriority>
     <FamilyName>Midrange/Standard</FamilyName>
     <ProgEntryScript>1</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
@@ -200,7 +200,7 @@
   </Families>
   <Families>
     <FamilyID>1</FamilyID>
-    <FamilyType>6</FamilyType>
+    <FamilyType>7</FamilyType>
     <SearchPriority>0</SearchPriority>
     <FamilyName>PIC24</FamilyName>
     <ProgEntryScript>21</ProgEntryScript>
@@ -227,7 +227,7 @@
   <Families>
     <FamilyID>2</FamilyID>
     <FamilyType>0</FamilyType>
-    <SearchPriority>12</SearchPriority>
+    <SearchPriority>13</SearchPriority>
     <FamilyName>Baseline</FamilyName>
     <ProgEntryScript>1</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
@@ -252,8 +252,8 @@
   </Families>
   <Families>
     <FamilyID>3</FamilyID>
-    <FamilyType>3</FamilyType>
-    <SearchPriority>10</SearchPriority>
+    <FamilyType>4</FamilyType>
+    <SearchPriority>11</SearchPriority>
     <FamilyName>PIC18F</FamilyName>
     <ProgEntryScript>1</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
@@ -278,7 +278,7 @@
   </Families>
   <Families>
     <FamilyID>4</FamilyID>
-    <FamilyType>4</FamilyType>
+    <FamilyType>5</FamilyType>
     <SearchPriority>1</SearchPriority>
     <FamilyName>PIC18F_J_</FamilyName>
     <ProgEntryScript>70</ProgEntryScript>
@@ -304,7 +304,7 @@
   </Families>
   <Families>
     <FamilyID>5</FamilyID>
-    <FamilyType>7</FamilyType>
+    <FamilyType>8</FamilyType>
     <SearchPriority>2</SearchPriority>
     <FamilyName>dsPIC33</FamilyName>
     <ProgEntryScript>21</ProgEntryScript>
@@ -330,8 +330,8 @@
   </Families>
   <Families>
     <FamilyID>6</FamilyID>
-    <FamilyType>5</FamilyType>
-    <SearchPriority>8</SearchPriority>
+    <FamilyType>6</FamilyType>
+    <SearchPriority>9</SearchPriority>
     <FamilyName>PIC18F_K_</FamilyName>
     <ProgEntryScript>1</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
@@ -356,8 +356,8 @@
   </Families>
   <Families>
     <FamilyID>7</FamilyID>
-    <FamilyType>8</FamilyType>
-    <SearchPriority>11</SearchPriority>
+    <FamilyType>9</FamilyType>
+    <SearchPriority>12</SearchPriority>
     <FamilyName>dsPIC30</FamilyName>
     <ProgEntryScript>1</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
@@ -382,7 +382,7 @@
   </Families>
   <Families>
     <FamilyID>8</FamilyID>
-    <FamilyType>9</FamilyType>
+    <FamilyType>10</FamilyType>
     <SearchPriority>4</SearchPriority>
     <FamilyName>dsPIC30 SMPS</FamilyName>
     <ProgEntryScript>21</ProgEntryScript>
@@ -408,8 +408,8 @@
   </Families>
   <Families>
     <FamilyID>9</FamilyID>
-    <FamilyType>11</FamilyType>
-    <SearchPriority>13</SearchPriority>
+    <FamilyType>12</FamilyType>
+    <SearchPriority>14</SearchPriority>
     <FamilyName>KEELOQ® HCS</FamilyName>
     <ProgEntryScript>183</ProgEntryScript>
     <ProgExitScript>183</ProgExitScript>
@@ -434,8 +434,8 @@
   </Families>
   <Families>
     <FamilyID>10</FamilyID>
-    <FamilyType>13</FamilyType>
-    <SearchPriority>15</SearchPriority>
+    <FamilyType>14</FamilyType>
+    <SearchPriority>16</SearchPriority>
     <FamilyName>EEPROMS/24LC</FamilyName>
     <ProgEntryScript>191</ProgEntryScript>
     <ProgExitScript>192</ProgExitScript>
@@ -460,8 +460,8 @@
   </Families>
   <Families>
     <FamilyID>11</FamilyID>
-    <FamilyType>14</FamilyType>
-    <SearchPriority>16</SearchPriority>
+    <FamilyType>15</FamilyType>
+    <SearchPriority>17</SearchPriority>
     <FamilyName>EEPROMS/25LC</FamilyName>
     <ProgEntryScript>201</ProgEntryScript>
     <ProgExitScript>202</ProgExitScript>
@@ -486,8 +486,8 @@
   </Families>
   <Families>
     <FamilyID>12</FamilyID>
-    <FamilyType>15</FamilyType>
-    <SearchPriority>17</SearchPriority>
+    <FamilyType>16</FamilyType>
+    <SearchPriority>18</SearchPriority>
     <FamilyName>EEPROMS/93LCxA,C</FamilyName>
     <ProgEntryScript>207</ProgEntryScript>
     <ProgExitScript>192</ProgExitScript>
@@ -512,8 +512,8 @@
   </Families>
   <Families>
     <FamilyID>13</FamilyID>
-    <FamilyType>16</FamilyType>
-    <SearchPriority>18</SearchPriority>
+    <FamilyType>17</FamilyType>
+    <SearchPriority>19</SearchPriority>
     <FamilyName>EEPROMS/93LCxB,C</FamilyName>
     <ProgEntryScript>207</ProgEntryScript>
     <ProgExitScript>192</ProgExitScript>
@@ -539,7 +539,7 @@
   <Families>
     <FamilyID>14</FamilyID>
     <FamilyType>2</FamilyType>
-    <SearchPriority>7</SearchPriority>
+    <SearchPriority>8</SearchPriority>
     <FamilyName>Midrange/1.8V Min</FamilyName>
     <ProgEntryScript>1</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
@@ -564,8 +564,8 @@
   </Families>
   <Families>
     <FamilyID>15</FamilyID>
-    <FamilyType>12</FamilyType>
-    <SearchPriority>14</SearchPriority>
+    <FamilyType>13</FamilyType>
+    <SearchPriority>15</SearchPriority>
     <FamilyName>EEPROMS/11LC</FamilyName>
     <ProgEntryScript>238</ProgEntryScript>
     <ProgExitScript>192</ProgExitScript>
@@ -590,9 +590,9 @@
   </Families>
   <Families>
     <FamilyID>16</FamilyID>
-    <FamilyType>10</FamilyType>
-    <SearchPriority>5</SearchPriority>
-    <FamilyName>PIC32</FamilyName>
+    <FamilyType>11</FamilyType>
+    <SearchPriority>6</SearchPriority>
+    <FamilyName>PIC32MX</FamilyName>
     <ProgEntryScript>243</ProgEntryScript>
     <ProgExitScript>244</ProgExitScript>
     <ReadDevIDScript>245</ReadDevIDScript>
@@ -616,8 +616,8 @@
   </Families>
   <Families>
     <FamilyID>17</FamilyID>
-    <FamilyType>17</FamilyType>
-    <SearchPriority>19</SearchPriority>
+    <FamilyType>18</FamilyType>
+    <SearchPriority>20</SearchPriority>
     <FamilyName>MCP250xx</FamilyName>
     <ProgEntryScript>182</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
@@ -642,7 +642,7 @@
   </Families>
   <Families>
     <FamilyID>18</FamilyID>
-    <FamilyType>18</FamilyType>
+    <FamilyType>19</FamilyType>
     <SearchPriority>3</SearchPriority>
     <FamilyName>dsPIC33EP</FamilyName>
     <ProgEntryScript>21</ProgEntryScript>
@@ -668,12 +668,12 @@
   </Families>
   <Families>
     <FamilyID>19</FamilyID>
-    <FamilyType>19</FamilyType>
-    <SearchPriority>6</SearchPriority>
-    <FamilyName>Midrange 1.8V Min+</FamilyName>
+    <FamilyType>3</FamilyType>
+    <SearchPriority>7</SearchPriority>
+    <FamilyName>Midrange/1.8V Min+</FamilyName>
     <ProgEntryScript>1</ProgEntryScript>
     <ProgExitScript>2</ProgExitScript>
-    <ReadDevIDScript>3</ReadDevIDScript>
+    <ReadDevIDScript>290</ReadDevIDScript>
     <DeviceIDMask>16383</DeviceIDMask>
     <BlankValue>16383</BlankValue>
     <BytesPerLocation>2</BytesPerLocation>
@@ -691,6 +691,32 @@
     <TestMemoryStart>65536</TestMemoryStart>
     <TestMemoryLength>0</TestMemoryLength>
     <Vpp>8.5</Vpp>
+  </Families>
+  <Families>
+    <FamilyID>20</FamilyID>
+    <FamilyType>20</FamilyType>
+    <SearchPriority>5</SearchPriority>
+    <FamilyName>PIC32MM</FamilyName>
+    <ProgEntryScript>243</ProgEntryScript>
+    <ProgExitScript>244</ProgExitScript>
+    <ReadDevIDScript>245</ReadDevIDScript>
+    <DeviceIDMask>268431360</DeviceIDMask>
+    <BlankValue>4294967295</BlankValue>
+    <BytesPerLocation>4</BytesPerLocation>
+    <AddressIncrement>4</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>1</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
   </Families>
   <PartsList>
     <PartName>PIC18LF25K50</PartName>
@@ -903,16 +929,16 @@
     <Family>19</Family>
     <DeviceID>12323</DeviceID>
     <ProgramMem>8064</ProgramMem>
-    <EEMem>128</EEMem>
-    <EEAddr>8064</EEAddr>
+    <EEMem>0</EEMem>
+    <EEAddr>0</EEAddr>
     <ConfigWords>2</ConfigWords>
     <ConfigAddr>65550</ConfigAddr>
     <UserIDWords>4</UserIDWords>
     <UserIDAddr>65536</UserIDAddr>
     <BandGapMask>0</BandGapMask>
     <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-      <unsignedShort>16383</unsignedShort>
-      <unsignedShort>14131</unsignedShort>
+      <unsignedShort>16127</unsignedShort>
+      <unsignedShort>16371</unsignedShort>
       <unsignedShort>0</unsignedShort>
       <unsignedShort>0</unsignedShort>
       <unsignedShort>0</unsignedShort>
@@ -936,9 +962,9 @@
     <CPConfig>1</CPConfig>
     <OSSCALSave>false</OSSCALSave>
     <IgnoreAddress>0</IgnoreAddress>
-    <VddMin>2.5</VddMin>
+    <VddMin>2.7</VddMin>
     <VddMax>5</VddMax>
-    <VddErase>2.5</VddErase>
+    <VddErase>2.7</VddErase>
     <CalibrationWords>2</CalibrationWords>
     <ChipEraseScript>4</ChipEraseScript>
     <ProgMemAddrSetScript>230</ProgMemAddrSetScript>
@@ -953,7 +979,7 @@
     <ConfigRdPrepScript>0</ConfigRdPrepScript>
     <ConfigRdScript>34</ConfigRdScript>
     <ProgMemWrPrepScript>0</ProgMemWrPrepScript>
-    <ProgMemWrScript>32</ProgMemWrScript>
+    <ProgMemWrScript>291</ProgMemWrScript>
     <ProgMemWrWords>32</ProgMemWrWords>
     <ProgMemPanelBufs>0</ProgMemPanelBufs>
     <ProgMemPanelOffset>0</ProgMemPanelOffset>
@@ -1001,7 +1027,109 @@
     <DebugReserved8Script>0</DebugReserved8Script>
     <LVPScript>266</LVPScript>
   </PartsList>
-
+  <PartsList>
+    <PartName>PIC32MM0064GPL028</PartName>
+    <Family>20</Family>
+    <DeviceID>112271443</DeviceID>
+    <ProgramMem>17856</ProgramMem>
+    <EEMem>0</EEMem>
+    <EEAddr>0</EEAddr>
+    <ConfigWords>8</ConfigWords>
+    <ConfigAddr>532682688</ConfigAddr>
+    <UserIDWords>2</UserIDWords>
+    <UserIDAddr>532682688</UserIDAddr>
+    <BandGapMask>0</BandGapMask>
+    <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>61440</unsignedShort>
+      <unsignedShort>119</unsignedShort>
+      <unsignedShort>7</unsignedShort>
+      <unsignedShort>63399</unsignedShort>
+      <unsignedShort>991</unsignedShort>
+      <unsignedShort>64543</unsignedShort>
+      <unsignedShort>4352</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigMasks>
+    <ConfigBlank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>32767</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigBlank>
+    <CPMask>4096</CPMask>
+    <CPConfig>8</CPConfig>
+    <OSSCALSave>false</OSSCALSave>
+    <IgnoreAddress>0</IgnoreAddress>
+    <VddMin>2.0</VddMin>
+    <VddMax>3.6</VddMax>
+    <VddErase>2.7</VddErase>
+    <CalibrationWords>0</CalibrationWords>
+    <ChipEraseScript>247</ChipEraseScript>
+    <ProgMemAddrSetScript>0</ProgMemAddrSetScript>
+    <ProgMemAddrBytes>0</ProgMemAddrBytes>
+    <ProgMemRdScript>246</ProgMemRdScript>
+    <ProgMemRdWords>32</ProgMemRdWords>
+    <EERdPrepScript>0</EERdPrepScript>
+    <EERdScript>0</EERdScript>
+    <EERdLocations>0</EERdLocations>
+    <UserIDRdPrepScript>0</UserIDRdPrepScript>
+    <UserIDRdScript>0</UserIDRdScript>
+    <ConfigRdPrepScript>0</ConfigRdPrepScript>
+    <ConfigRdScript>0</ConfigRdScript>
+    <ProgMemWrPrepScript>248</ProgMemWrPrepScript>
+    <ProgMemWrScript>249</ProgMemWrScript>
+    <ProgMemWrWords>128</ProgMemWrWords>
+    <ProgMemPanelBufs>0</ProgMemPanelBufs>
+    <ProgMemPanelOffset>0</ProgMemPanelOffset>
+    <EEWrPrepScript>0</EEWrPrepScript>
+    <EEWrScript>0</EEWrScript>
+    <EEWrLocations>0</EEWrLocations>
+    <UserIDWrPrepScript>0</UserIDWrPrepScript>
+    <UserIDWrScript>0</UserIDWrScript>
+    <ConfigWrPrepScript>0</ConfigWrPrepScript>
+    <ConfigWrScript>0</ConfigWrScript>
+    <OSCCALRdScript>0</OSCCALRdScript>
+    <OSCCALWrScript>0</OSCCALWrScript>
+    <DPMask>0</DPMask>
+    <WriteCfgOnErase>false</WriteCfgOnErase>
+    <BlankCheckSkipUsrIDs>false</BlankCheckSkipUsrIDs>
+    <IgnoreBytes>0</IgnoreBytes>
+    <ChipErasePrepScript>0</ChipErasePrepScript>
+    <BootFlash>1472</BootFlash>
+    <Config9Mask>0</Config9Mask>
+    <Config9Blank>0</Config9Blank>
+    <ProgMemEraseScript>0</ProgMemEraseScript>
+    <EEMemEraseScript>0</EEMemEraseScript>
+    <ConfigMemEraseScript>0</ConfigMemEraseScript>
+    <reserved1EraseScript>0</reserved1EraseScript>
+    <reserved2EraseScript>0</reserved2EraseScript>
+    <TestMemoryRdScript>0</TestMemoryRdScript>
+    <TestMemoryRdWords>0</TestMemoryRdWords>
+    <EERowEraseScript>0</EERowEraseScript>
+    <EERowEraseWords>0</EERowEraseWords>
+    <ExportToMPLAB>false</ExportToMPLAB>
+    <DebugHaltScript>0</DebugHaltScript>
+    <DebugRunScript>0</DebugRunScript>
+    <DebugStatusScript>0</DebugStatusScript>
+    <DebugReadExecVerScript>0</DebugReadExecVerScript>
+    <DebugSingleStepScript>0</DebugSingleStepScript>
+    <DebugBulkWrDataScript>0</DebugBulkWrDataScript>
+    <DebugBulkRdDataScript>0</DebugBulkRdDataScript>
+    <DebugWriteVectorScript>0</DebugWriteVectorScript>
+    <DebugReadVectorScript>0</DebugReadVectorScript>
+    <DebugRowEraseScript>0</DebugRowEraseScript>
+    <DebugRowEraseSize>0</DebugRowEraseSize>
+    <DebugReserved5Script>0</DebugReserved5Script>
+    <DebugReserved6Script>0</DebugReserved6Script>
+    <DebugReserved7Script>0</DebugReserved7Script>
+    <DebugReserved8Script>0</DebugReserved8Script>
+    <LVPScript>0</LVPScript>
+  </PartsList>
   <Scripts>
     <ScriptNumber>277</ScriptNumber>
     <ScriptName>18F_ChpErase.x3F8F</ScriptName>
@@ -1738,5 +1866,75 @@
       <unsignedShort>1</unsignedShort>
     </Script>
     <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>290</ScriptNumber>
+    <ScriptName>Midrange/1.8V Min+ Read Device ID</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>24</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>242</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>242</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>3</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>4</unsignedShort>
+      <unsignedShort>240</unsignedShort>
+      <unsignedShort>240</unsignedShort>
+      <unsignedShort>238</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>6</unsignedShort>
+      <unsignedShort>233</unsignedShort>
+      <unsignedShort>8</unsignedShort>
+      <unsignedShort>1</unsignedShort>
+    </Script>
+    <Comment>..</Comment>
+  </Scripts>
+  <Scripts>
+  <ScriptNumber>291</ScriptNumber>
+  <ScriptName>MR_PrgMemWr32Int.1</ScriptName>
+  <ScriptVersion>0</ScriptVersion>
+  <UNUSED1>0</UNUSED1>
+  <ScriptLength>24</ScriptLength>
+  <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47874</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47874</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43761</unsignedShort>
+  <unsignedShort>43753</unsignedShort>
+  <unsignedShort>47880</unsignedShort>
+  <unsignedShort>47902</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47880</unsignedShort>
+  <unsignedShort>43751</unsignedShort>
+  <unsignedShort>141</unsignedShort>
+  <unsignedShort>43758</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  <unsignedShort>47878</unsignedShort>
+  </Script>
+  <Comment>
+  Wr x32 int timed 3ms. LdPrgMem(02), AdrInc(06), BeginPrg(08)
+  </Comment>
   </Scripts>
 </DeviceFile>

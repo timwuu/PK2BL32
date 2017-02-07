@@ -177,6 +177,7 @@
       <DependentUpon>FormTestMemory.cs</DependentUpon>
     </Compile>
     <Compile Include="PIC32Device.cs" />
+    <Compile Include="PIC32MMFunctions.cs" />
     <Compile Include="PIC32MXFunctions.cs">
       <SubType>Code</SubType>
     </Compile>

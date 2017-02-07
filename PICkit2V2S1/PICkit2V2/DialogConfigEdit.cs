@@ -340,7 +340,7 @@ namespace PICkit2V2
                 }
             }
             // PIC32
-            else if (Pk2.FamilyIsPIC32())
+            else if (Pk2.FamilyIsPIC32MX())
             {
                 //timijk: quick fix for PIC32MX1xx/2xx
                 if (Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigWords == 8)
