@@ -14,55 +14,11 @@ namespace PICkit2V2
         public static DelegateStepStatusBar StepStatusBar;
 
         //timijk 2017.02.04
-        private static uint[] xxpe_Loader = new uint[] {
-                                                        0x0C00, 0x0C00,
-                                                        0xED20, 0x0C00,  // turn on LED.B5
-                                                        0x41A3, 0xBF80,
-                                                        0xF843, 0x2738,  // LATBSET
-
-                                                        0xDEAD, 0x41A7,
-                                                        0xFF20, 0x41A6,
-                                                        0xFF20, 0x41A5,
-                                                        0x69E0, 0x6A60,
-                                                        0x000C, 0x94E3,
-                                                        0x8DFA, 0x0C00,
-                                                        0x6950, 0x0C00,
-                                                        0xE940, 0x6DBE,
-                                                        0xADFB, 0x6E42,
-                                                        0xCFF2, 0x0C00,
-                                                        0x0C00, 0x0C00,
-                                                        0xA000, 0x41A2,
-                                                        0x0901, 0x5042,
-                                                        0x0C00, 0x4582};
-
-        private static uint[] xpe_Loader = new uint[] {
-                                                        0x0C00, 0x0C00,
-                                                        0xED20, 0x0C00,  // turn on LED.B5
-                                                        0x41A3, 0xBF80,
-                                                        0xF843, 0x2738,  // LATBSET
-
-                                                        0xDEAD, 0x41A7,
-                                                        0xFF20, 0x41A6,
-                                                        0xFF20, 0x41A5,  
-                                                        0x69E0, 0x6A60,
-                                                        0x000E, 0x94E3,  
-                                                        0x8DFA, 0x0C00,
-                                                        0x0C00, 0x0C00,
-                                                        0x6950, 0x0C00,
-                                                        0xE940, 0x6DBE,
-                                                        0xADFB, 0x6E42, // <---
-                                                        0xCFF0, 0x0C00,  // <---
-                                                        0x0C00, 0x0C00,
-                                                        0xA000, 0x41A2,
-                                                        0x0901, 0x5042,  
-                                                        0x0C00, 0x4582};
-
         private static uint[] pe_Loader = new uint[] {
-                                                        0x0C00, 0x0C00,
-                                                        0xED20, 0x0C00,  // turn on LED.B5
-                                                        0x41A3, 0xBF80,  
-                                                        0xF843, 0x2738,  // LATBSET
-
+                                                     //   0x0C00, 0x0C00,
+                                                     //   0xED20, 0x0C00,  // turn on LED.B5
+                                                     //   0x41A3, 0xBF80,  
+                                                     //   0xF843, 0x2738,  // LATBSET
                                                         0x41A3, 0xFF20,
                                                         0x41A5, 0xDEAD,
                                                         0x6A30, 0x6930,
@@ -74,9 +30,7 @@ namespace PICkit2V2
                                                         0x6D2E,
                                                         0x3339, 0x0301,
                                                         0x4599,
-                                                        //0x0C00, 0x0C00,
-                                                        //0x0C00, 0x0C00,
-                                                        0x0C00, 0x0C00 };  //nop;nop;
+                                                        0x0C00, 0x0C00 };  //nop;nop; required
 
         private const int pic32_PE_Version_MM = 0x0510;
         private static uint[] PIC32_PE_MM = new uint[] {
@@ -219,7 +173,7 @@ namespace PICkit2V2
             0xA00041A2,0x0596F400,0x00043882,0xF850ED01,
             0x45040000,0x4C0D459F,
             0x0510CDAB,
-            0xA0000E00,0x00000200,0x00000000,0x00000000
+            0xA0000E00,0x000002000
         };
 
         private static int pic32_PE_Version = 0x00;
@@ -265,6 +219,46 @@ namespace PICkit2V2
 
         }
 
+        private static bool Util_TurnOnLED()
+        {
+            int commOffSet = 0;
+            byte[] commandArrayp = new byte[64];
+
+            // jump to PE loader
+            commOffSet = 0;
+            commandArrayp[commOffSet++] = KONST.CLR_DOWNLOAD_BUFFER;
+            commandArrayp[commOffSet++] = KONST.DOWNLOAD_DATA;
+            commandArrayp[commOffSet++] = 20;
+
+            // timijk Step 0. Turn On LED B5
+            commOffSet = addInstruction(commandArrayp, 0x0C00ED20, commOffSet); // B5
+            commOffSet = addInstruction(commandArrayp, 0xBF8041A3, commOffSet);
+            commOffSet = addInstruction(commandArrayp, 0x2714F843, commOffSet); // TRISBCLR
+            commOffSet = addInstruction(commandArrayp, 0xBF8041A3, commOffSet);
+            commOffSet = addInstruction(commandArrayp, 0x2738F843, commOffSet); // LATBSET
+            
+            // execute
+            commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
+            commandArrayp[commOffSet++] = 5;
+            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
+            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
+            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
+            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
+            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
+
+            for (; commOffSet < 64; commOffSet++)
+            {
+                commandArrayp[commOffSet] = KONST.END_OF_BUFFER;
+            }
+            Pk2.writeUSB(commandArrayp);
+            if (Pk2.BusErrorCheck())    // Any timeouts?
+            {
+                return false;           // yes - abort
+            }
+
+            return true;
+
+        }
 
         private static bool Util_TurnOffLED()
         {
@@ -312,20 +306,11 @@ namespace PICkit2V2
             byte[] commandArrayp = new byte[64];
             commandArrayp[commOffSet++] = KONST.CLR_DOWNLOAD_BUFFER;
             commandArrayp[commOffSet++] = KONST.DOWNLOAD_DATA;
-            commandArrayp[commOffSet++] = 9*4;  //timijk doublecheck
-            // timijk Step 0. Turn On LED B5
-            commOffSet = addInstruction(commandArrayp, 0x0C00ED20, commOffSet); // B5
-            commOffSet = addInstruction(commandArrayp, 0xBF8041A3, commOffSet);
-            //commOffSet = addInstruction(commandArrayp, 0x2718F843, commOffSet); // TRISBSET
-            commOffSet = addInstruction(commandArrayp, 0x2714F843, commOffSet); // TRISBCLR
-            commOffSet = addInstruction(commandArrayp, 0xBF8041A3, commOffSet);
-            commOffSet = addInstruction(commandArrayp, 0x2738F843, commOffSet); // LATBSET
-            //commOffSet = addInstruction(commandArrayp, 0xBF8041A3, commOffSet);
-            // commOffSet = addInstruction(commandArrayp, 0x2734F843, commOffSet); // LATBCLR
+            commandArrayp[commOffSet++] = 8;  //timijk doublecheck
 
             // timijk step 0.b set EXECADDR=0;
-            commOffSet = addInstruction(commandArrayp, 0xBF8041A2, commOffSet);
-            commOffSet = addInstruction(commandArrayp, 0x3B021802, commOffSet);
+            //commOffSet = addInstruction(commandArrayp, 0xBF8041A2, commOffSet);
+            //commOffSet = addInstruction(commandArrayp, 0x3B021802, commOffSet);
 
             // timijk Step 1. Setup the PIC32MM RAM A000.0200
             commOffSet = addInstruction(commandArrayp, 0xa00041a4, commOffSet);
@@ -333,19 +318,12 @@ namespace PICkit2V2
 
             // execute
             commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
-            commandArrayp[commOffSet++] = 14;   //timijk doublecheck
+            commandArrayp[commOffSet++] = 7;   //timijk doublecheck
             commandArrayp[commOffSet++] = KONST._JT2_SENDCMD;
             commandArrayp[commOffSet++] = 0x05;                 // MTAP_SW_ETAP
             commandArrayp[commOffSet++] = KONST._JT2_SETMODE;
             commandArrayp[commOffSet++] = 6;     // Force the TAP controller 
             commandArrayp[commOffSet++] = 0x1F;  // into the Run Test/Idle state
-            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-            commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
             commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
             commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
             for (; commOffSet < 64; commOffSet++)
@@ -358,6 +336,9 @@ namespace PICkit2V2
                 return false;           // yes - abort
             }
 
+            //timijk 2017.02.08 Turn On LED.B5
+            //if (Util_TurnOnLED() == false) return false;
+
             //timijk Step 2 Download the PE loader
             for (int i = 0; i < pe_Loader.Length; i += 2)
             {
@@ -369,7 +350,7 @@ namespace PICkit2V2
                 commOffSet = addInstruction(commandArrayp, ((pe_Loader[i+1] << 16) | 0x41A6), commOffSet);
                 commOffSet = addInstruction(commandArrayp, ((pe_Loader[i] << 16) | 0x50c6) , commOffSet);
                 commOffSet = addInstruction(commandArrayp, 0x6e42eb40, commOffSet);
-               // commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // two nops
+                // commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // two nops
                 // execute
                 commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
                 commandArrayp[commOffSet++] = 3;
@@ -389,7 +370,7 @@ namespace PICkit2V2
             }
 
             //timijk 2017.02.06 Turn Off LED.B5
-            if (Util_TurnOffLED() == false) return false;
+            //if (Util_TurnOffLED() == false) return false;
 
             // jump to PE loader
             commOffSet = 0;
@@ -401,8 +382,8 @@ namespace PICkit2V2
             commOffSet = addInstruction(commandArrayp, 0xa00041b9, commOffSet);
             commOffSet = addInstruction(commandArrayp, 0x02015339, commOffSet);  //<-- bug fix
             commOffSet = addInstruction(commandArrayp, 0x0c004599, commOffSet);
-            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);
-            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);
+            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // nops;nops; required
+            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // nops;nops; required
             // execute
             commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
             commandArrayp[commOffSet++] = 5+17; // 7;  // 20;
@@ -689,18 +670,6 @@ namespace PICkit2V2
             UpdateStatusWinText("Downloading Programming Executive...");
 
             //timijk 2017.02.04
-            //if (Pk2.DevFile.PartsList[Pk2.ActivePart].PartName.IndexOf("PIC32MX2") == 0 ||
-            //    Pk2.DevFile.PartsList[Pk2.ActivePart].PartName.IndexOf("PIC32MX1") == 0)
-            //{
-            //    pic32_PE_Version = pic32_PE_Version_RS32;
-            //    PIC32_PE = PIC32_PE_RS32;
-            //}
-            //else
-            //{
-            //    pic32_PE_Version = pic32_PE_Version_RS128;
-            //    PIC32_PE = PIC32_PE_RS128;
-            //}
-
             pic32_PE_Version = pic32_PE_Version_MM;
             PIC32_PE = PIC32_PE_MM;
 
