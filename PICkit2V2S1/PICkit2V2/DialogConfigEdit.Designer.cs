@@ -886,7 +886,7 @@ namespace PICkit2V2
             this.label5.Size = new System.Drawing.Size(615, 13);
             this.label5.TabIndex = 7;
             this.label5.Text = "Device Configuration Words may be edited here at the bit level.  Refer to device " +
-                "datasheet for specific configuration bit functions.";
+    "datasheet for specific configuration bit functions.";
             // 
             // textBoxUnimpl
             // 

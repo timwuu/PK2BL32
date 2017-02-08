@@ -367,6 +367,21 @@ namespace PICkit2V2
                 configAddress = (int)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr;
                 configIncrement = 2;
             }
+            else if (Pk2.FamilyIsPIC32MM())
+            {
+                //timijk 2017.02.08
+                
+                cfgNames[0] = "USERID";
+                cfgNames[1] = "FDEVOPTL";
+                cfgNames[2] = "FICD";
+                cfgNames[3] = "FPOR";
+                cfgNames[4] = "FWDT";
+                cfgNames[5] = "FOSCSEL";
+                cfgNames[6] = "FSEC";
+               
+                configAddress = (int)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr;
+                configIncrement = 2;
+            }
 
             for (int w = 0; w < K_MAXCONFIGS; w++)
             {
@@ -416,6 +431,17 @@ namespace PICkit2V2
                 {
                     configWords[w].configPanel.Visible = false;
                 }
+            }
+
+            if(Pk2.FamilyIsPIC32MM())
+            {
+                configWords[0].addr.Text = string.Format("{0:X}", configAddress+6);
+                configWords[1].addr.Text = string.Format("{0:X}", configAddress+4);
+                configWords[2].addr.Text = string.Format("{0:X}", configAddress+8);
+                configWords[3].addr.Text = string.Format("{0:X}", configAddress+12);
+                configWords[4].addr.Text = string.Format("{0:X}", configAddress+16);
+                configWords[5].addr.Text = string.Format("{0:X}", configAddress+20);
+                configWords[6].addr.Text = string.Format("{0:X}", configAddress+26);
             }
 
         }

@@ -529,7 +529,7 @@ namespace PICkit2V2
             int commOffSet = 0;
             commandArrayp[commOffSet++] = KONST.CLR_UPLOAD_BUFFER;
             commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
-            commandArrayp[commOffSet++] = 10;
+            commandArrayp[commOffSet++] = 8;
             commandArrayp[commOffSet++] = KONST._JT2_SENDCMD;
             commandArrayp[commOffSet++] = 0x0E;                 // ETAP_FASTDATA
             commandArrayp[commOffSet++] = KONST._JT2_XFRFASTDAT_LIT;
@@ -537,8 +537,6 @@ namespace PICkit2V2
             commandArrayp[commOffSet++] = 0x00;
             commandArrayp[commOffSet++] = 0x07;     // EXEC_VERSION
             commandArrayp[commOffSet++] = 0x00;
-            commandArrayp[commOffSet++] = KONST._DELAY_LONG;
-            commandArrayp[commOffSet++] = 0x01; // 23us*1 = 23us
             commandArrayp[commOffSet++] = KONST._JT2_GET_PE_RESP;
             Pk2.writeUSB(commandArrayp);
             if (Pk2.BusErrorCheck())    // Any timeouts?
@@ -836,31 +834,58 @@ namespace PICkit2V2
                 StepStatusBar();
             } while (wordsRead < bootMemP32);
 
-            if (false)
+
+            // User ID / Config Memory ========================================================================================
             {
-                // User ID Memory ========================================================================================
-                statusWinText += "UserIDs... ";
-                UpdateStatusWinText(statusWinText);
-                // User IDs & Configs are in last block of boot mem
-                Pk2.DeviceBuffers.UserIDs[0] = (uint)upload_buffer[uploadIndex];
-                Pk2.DeviceBuffers.UserIDs[1] = (uint)upload_buffer[uploadIndex + 1];
+                uint address = KONST.P32MM_CONFIG_START_ADDR;
+                byte[] commandArrayp = new byte[20+4];
+                int commOffSet = 0;
+                commandArrayp[commOffSet++] = KONST.CLR_DOWNLOAD_BUFFER;
+                commandArrayp[commOffSet++] = KONST.DOWNLOAD_DATA;
+                commandArrayp[commOffSet++] = 4;
 
-                //timijk: quick fix for PIC32MX1xx/2xx
-                //uploadIndex += bytesPerWord; 
-                if (Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr != Pk2.DevFile.PartsList[Pk2.ActivePart].UserIDAddr)
+                commOffSet = addInstruction(commandArrayp, address, commOffSet);
+
+                commandArrayp[commOffSet++] = KONST.CLR_UPLOAD_BUFFER;
+                commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
+                commandArrayp[commOffSet++] = 13;
+                commandArrayp[commOffSet++] = KONST._JT2_SENDCMD;
+                commandArrayp[commOffSet++] = 0x0E;    //ETAP_FASTDATA
+                commandArrayp[commOffSet++] = KONST._JT2_XFRFASTDAT_LIT;
+                commandArrayp[commOffSet++] = 0x07;   // Length: Word
+                commandArrayp[commOffSet++] = 0x00;
+                commandArrayp[commOffSet++] = 0x01;   // PE COMMAND: READ
+                commandArrayp[commOffSet++] = 0x00;
+                commandArrayp[commOffSet++] = KONST._JT2_XFRFASTDAT_BUF;
+                commandArrayp[commOffSet++] = KONST._JT2_WAIT_PE_RESP;  // Dump the received Response Opcode
+                commandArrayp[commOffSet++] = KONST._JT2_GET_PE_RESP;
+                commandArrayp[commOffSet++] = KONST._LOOP;  //Loop _JT2_GET_PE_RESP
+                commandArrayp[commOffSet++] = 0x01;
+                commandArrayp[commOffSet++] = 0x06;   //total 0x07 * 4 bytes = 28 bytes
+                commandArrayp[commOffSet++] = KONST.UPLOAD_DATA_NOLEN;
+
+                bool result = Pk2.writeUSB(commandArrayp);
+
+                if (result)
                 {
-                    uploadIndex += bytesPerWord;
-                }
+                    result = Pk2.readUSB();
 
-                // Config Memory ========================================================================================
-                statusWinText += "Config... ";
-                UpdateStatusWinText(statusWinText);
-                for (int cfg = 0; cfg < Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigWords; cfg++)
-                {
-                    Pk2.DeviceBuffers.ConfigWords[cfg] = (uint)upload_buffer[uploadIndex++];
-                    Pk2.DeviceBuffers.ConfigWords[cfg] |= (uint)(upload_buffer[uploadIndex++] << 8);
-                }
+                    Array.Copy(Pk2.Usb_read_array, 1, upload_buffer, 0, KONST.USB_REPORTLENGTH);
 
+                    statusWinText += "UserIDs / Config... ";
+                    UpdateStatusWinText(statusWinText);                
+
+                    Pk2.DeviceBuffers.ConfigWords[0] = (uint)upload_buffer[6] | (uint)upload_buffer[7]<<8;
+                    Pk2.DeviceBuffers.ConfigWords[1] = (uint)upload_buffer[4];
+                    Pk2.DeviceBuffers.ConfigWords[2] = (uint)upload_buffer[8];
+                    Pk2.DeviceBuffers.ConfigWords[3] = (uint)upload_buffer[12];
+                    Pk2.DeviceBuffers.ConfigWords[4] = (uint)upload_buffer[16] | (uint)upload_buffer[17] << 8;
+                    Pk2.DeviceBuffers.ConfigWords[5] = (uint)upload_buffer[20] | (uint)upload_buffer[21] << 8;
+                    Pk2.DeviceBuffers.ConfigWords[6] = (uint)upload_buffer[27]<<8;
+
+                    Pk2.DeviceBuffers.UserIDs[0] = (uint)upload_buffer[6];
+                    Pk2.DeviceBuffers.UserIDs[1] = (uint)upload_buffer[7];
+                }
             }
 
             statusWinText += "Done.";
@@ -917,10 +942,19 @@ namespace PICkit2V2
             statusWinText += "UserID & Config... ";
             UpdateStatusWinText(statusWinText);
 
-            if (!PEBlankCheck(KONST.P32_BOOT_FLASH_START_ADDR
-                + (uint)(bootMemP32 * bytesPerWord), (uint)16))
+            // #17C0-#17DF
+            if (!PEBlankCheck(KONST.P32MM_CONFIG_START_ADDR, (uint)32))
             {
                 statusWinText = "ID / Config Memory is not blank";
+                UpdateStatusWinText(statusWinText);
+                Pk2.RunScript(KONST.PROG_EXIT, 1);
+                return false;
+            }
+
+            //timijk #1740-#175F
+            if (!PEBlankCheck(KONST.P32MM_ALT_CONFIG_START_ADDR, (uint)32))
+            {
+                statusWinText = "Alt ID / Config Memory is not blank";
                 UpdateStatusWinText(statusWinText);
                 Pk2.RunScript(KONST.PROG_EXIT, 1);
                 return false;
@@ -1420,54 +1454,24 @@ namespace PICkit2V2
             statusWinText += "ID/Config Flash... ";
             UpdateStatusWinText(statusWinText);
 
-            uint[] cfgBuf = new uint[4];
-            cfgBuf[0] = Pk2.DeviceBuffers.UserIDs[0] & 0xFF;
-            cfgBuf[0] |= (Pk2.DeviceBuffers.UserIDs[1] & 0xFF) << 8;
+            uint[] cfgBuf = new uint[6];
+            cfgBuf[0] = 0x0000FF00;
+            cfgBuf[1] = 0xFFFFFF00;  //BlankMask
+            cfgBuf[2] = 0xFFFFFF00;
+            cfgBuf[3] = 0xFFFF0000;
+            cfgBuf[4] = 0xFFFF0000;
+            cfgBuf[5] = 0x00FFFFFF;
 
-            //timijk: quick fix for PIC32MX1xx/2xx
-            if (Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr != Pk2.DevFile.PartsList[Pk2.ActivePart].UserIDAddr)
-            {
+            cfgBuf[0] |= Pk2.DeviceBuffers.ConfigWords[0] << 16 | Pk2.DeviceBuffers.ConfigWords[1];
+            cfgBuf[1] |= Pk2.DeviceBuffers.ConfigWords[2];
+            cfgBuf[2] |= Pk2.DeviceBuffers.ConfigWords[3];
+            cfgBuf[3] |= Pk2.DeviceBuffers.ConfigWords[4];
+            cfgBuf[4] |= Pk2.DeviceBuffers.ConfigWords[5];
+            cfgBuf[5] |= Pk2.DeviceBuffers.ConfigWords[6] <<16;          
 
-                cfgBuf[0] |= 0xFFFF0000;
+            bufferCRC = p32CRC_buf(cfgBuf, (uint)0, (uint)6);
 
-                cfgBuf[1] = (Pk2.DeviceBuffers.ConfigWords[0] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[0]) | ((Pk2.DeviceBuffers.ConfigWords[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1]) << 16);
-                cfgBuf[1] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[0] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[0])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[1]) << 16);
-                cfgBuf[2] = (Pk2.DeviceBuffers.ConfigWords[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2]) | ((Pk2.DeviceBuffers.ConfigWords[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3]) << 16);
-                cfgBuf[2] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[2])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[3]) << 16);
-                cfgBuf[3] = (Pk2.DeviceBuffers.ConfigWords[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4]) | ((Pk2.DeviceBuffers.ConfigWords[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5]) << 16);
-                cfgBuf[3] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[4])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[5]) << 16);
-
-            }
-            else
-            {
-                cfgBuf[0] |= ((Pk2.DeviceBuffers.ConfigWords[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1]) << 16);
-                cfgBuf[0] |= ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[1]) << 16);
-
-                cfgBuf[1] = (Pk2.DeviceBuffers.ConfigWords[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2]) | ((Pk2.DeviceBuffers.ConfigWords[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3]) << 16);
-                cfgBuf[1] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[2])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[3]) << 16);
-
-                cfgBuf[2] = (Pk2.DeviceBuffers.ConfigWords[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4]) | ((Pk2.DeviceBuffers.ConfigWords[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5]) << 16);
-                cfgBuf[2] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[4])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[5]) << 16);
-
-                cfgBuf[3] = (Pk2.DeviceBuffers.ConfigWords[6] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[6]) | ((Pk2.DeviceBuffers.ConfigWords[7] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[7]) << 16);
-                cfgBuf[3] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[6] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[6])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[7] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[7]) << 16);
-
-            }
-
-            if (codeProtect)
-            {
-                cfgBuf[3] &= ~((uint)Pk2.DevFile.PartsList[Pk2.ActivePart].CPMask << 16);
-            }
-
-            bufferCRC = p32CRC_buf(cfgBuf, (uint)0, (uint)4);
-
-            deviceCRC = PEGetCRC(KONST.P32_BOOT_FLASH_START_ADDR + (uint)(bootMemP32 * bytesPerWord), (uint)(4 * bytesPerWord));
+            deviceCRC = PEGetCRC(KONST.P32MM_CONFIG_START_ADDR+4, (uint)24); //#17C4~#17DB
 
             if (bufferCRC != deviceCRC)
             {

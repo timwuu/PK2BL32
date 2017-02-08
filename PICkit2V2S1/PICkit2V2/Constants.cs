@@ -314,7 +314,9 @@ namespace PICkit2V2
         // PIC32 related
         public const uint P32_PROGRAM_FLASH_START_ADDR = 0x1D000000;
         public const uint P32_BOOT_FLASH_START_ADDR    = 0x1FC00000;
-        
+        public const uint P32MM_CONFIG_START_ADDR      = 0x1FC017C0;
+        public const uint P32MM_ALT_CONFIG_START_ADDR  = 0x1FC01740;
+
         // OSCCAL regeration
         public static uint[] BASELINE_CAL = new uint[41]{
             0x0C00, 0x0025, 0x0067, 0x0068, 0x0069, 0x0066, 0x0CFE, 0x0006, 

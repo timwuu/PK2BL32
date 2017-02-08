@@ -1034,20 +1034,20 @@
     <ProgramMem>17856</ProgramMem>
     <EEMem>0</EEMem>
     <EEAddr>0</EEAddr>
-    <ConfigWords>8</ConfigWords>
+    <ConfigWords>7</ConfigWords>
     <ConfigAddr>532682688</ConfigAddr>
     <UserIDWords>2</UserIDWords>
-    <UserIDAddr>532682688</UserIDAddr>
+    <UserIDAddr>532682692</UserIDAddr>
     <BandGapMask>0</BandGapMask>
     <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>8</unsignedShort>
+      <unsignedShort>28</unsignedShort>
+      <unsignedShort>15</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>55255</unsignedShort>
+      <unsignedShort>32768</unsignedShort>
       <unsignedShort>0</unsignedShort>
-      <unsignedShort>61440</unsignedShort>
-      <unsignedShort>119</unsignedShort>
-      <unsignedShort>7</unsignedShort>
-      <unsignedShort>63399</unsignedShort>
-      <unsignedShort>991</unsignedShort>
-      <unsignedShort>64543</unsignedShort>
-      <unsignedShort>4352</unsignedShort>
       <unsignedShort>0</unsignedShort>
     </ConfigMasks>
     <ConfigBlank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -1061,8 +1061,8 @@
       <unsignedShort>32767</unsignedShort>
       <unsignedShort>0</unsignedShort>
     </ConfigBlank>
-    <CPMask>4096</CPMask>
-    <CPConfig>8</CPConfig>
+    <CPMask>32768</CPMask>
+    <CPConfig>7</CPConfig>
     <OSSCALSave>false</OSSCALSave>
     <IgnoreAddress>0</IgnoreAddress>
     <VddMin>2.0</VddMin>
