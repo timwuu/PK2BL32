@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Pk2 = PICkit2V2.PICkitFunctions;
+using PIC32MM = PICkit2V2.PIC32MMFunctions;
 
 namespace PICkit2V2
 {
@@ -158,45 +159,60 @@ namespace PICkit2V2
                                     if ((byteAddress >= Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr)
                                             && (configWords > 0))
                                     {
-                                        int configNum = (byteAddress - ((int)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr)) / cfgBytesPerWord;
-                                        if ((cfgBytesPerWord != bytesPerWord) && (bytePosition > 1))
-                                        { // PIC32
-                                            wordByte = (wordByte >> 16) & Pk2.DevFile.Families[Pk2.GetActiveFamily()].BlankValue;
-                                        }
-                                        if (configNum < Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigWords)
+                                        int configNum;
+
+                                        if (Pk2.FamilyIsPIC32MM())
                                         {
-                                            lineExceedsFlash = false;
-                                            configRead = true;
-                                            configLoaded[configNum] = true;
-                                            if (progMem)
-                                            { // if importing program memory
-                                                Pk2.DeviceBuffers.ConfigWords[configNum] &= 
-                                                       wordByte;
-                                                //    (wordByte & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[configNum]);
-                                                if (Pk2.DevFile.Families[Pk2.GetActiveFamily()].BlankValue == 0xFFF)
-                                                { // baseline, set OR mask bits
-                                                    Pk2.DeviceBuffers.ConfigWords[configNum] |= Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5];
-                                                }
-                                                if (byteAddress < progMemSizeBytes)
-                                                { // also mask off the word if in program memory.
-                                                    uint orMask = 0;
-                                                    if (Pk2.DevFile.Families[Pk2.GetActiveFamily()].BlankValue == 0xFFFF)
-                                                    {//PIC18J
-                                                        orMask = 0xF000;
-                                                    }   
-                                                    else 
-                                                    { // PIC24 is currently only other case of config in program mem
-                                                        orMask = (uint)(0xFF0000 | (Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[configNum]
-                                                            & ~Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[configNum]));
+                                            configNum = PIC32MM.setConfigWords(((uint)byteAddress - Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr), wordByte);
+
+                                            if (configNum >= 0)
+                                            {
+                                                lineExceedsFlash = false;
+                                                configRead = true;
+                                                configLoaded[configNum] = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            configNum = (byteAddress - ((int)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr)) / cfgBytesPerWord;
+                                            if ((cfgBytesPerWord != bytesPerWord) && (bytePosition > 1))
+                                            { // PIC32
+                                                wordByte = (wordByte >> 16) & Pk2.DevFile.Families[Pk2.GetActiveFamily()].BlankValue;
+                                            }
+                                            if (configNum < Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigWords)
+                                            {
+                                                lineExceedsFlash = false;
+                                                configRead = true;
+                                                configLoaded[configNum] = true;
+                                                if (progMem)
+                                                { // if importing program memory
+                                                    Pk2.DeviceBuffers.ConfigWords[configNum] &=
+                                                           wordByte;
+                                                    //    (wordByte & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[configNum]);
+                                                    if (Pk2.DevFile.Families[Pk2.GetActiveFamily()].BlankValue == 0xFFF)
+                                                    { // baseline, set OR mask bits
+                                                        Pk2.DeviceBuffers.ConfigWords[configNum] |= Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5];
                                                     }
-                                                    Pk2.DeviceBuffers.ProgramMemory[arrayAddress] &= 
-                                                    //       wordByte;
-                                                        (wordByte & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[configNum]); // add byte.
-                                                    Pk2.DeviceBuffers.ProgramMemory[arrayAddress] |= orMask;
+                                                    if (byteAddress < progMemSizeBytes)
+                                                    { // also mask off the word if in program memory.
+                                                        uint orMask = 0;
+                                                        if (Pk2.DevFile.Families[Pk2.GetActiveFamily()].BlankValue == 0xFFFF)
+                                                        {//PIC18J
+                                                            orMask = 0xF000;
+                                                        }
+                                                        else
+                                                        { // PIC24 is currently only other case of config in program mem
+                                                            orMask = (uint)(0xFF0000 | (Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[configNum]
+                                                                & ~Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[configNum]));
+                                                        }
+                                                        Pk2.DeviceBuffers.ProgramMemory[arrayAddress] &=
+                                                            //       wordByte;
+                                                            (wordByte & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[configNum]); // add byte.
+                                                        Pk2.DeviceBuffers.ProgramMemory[arrayAddress] |= orMask;
+                                                    }
                                                 }
                                             }
-                                        }                                    
-                                        
+                                        }
                                     } 
                                     
                                     // User IDs section ---------------------------------------------------------

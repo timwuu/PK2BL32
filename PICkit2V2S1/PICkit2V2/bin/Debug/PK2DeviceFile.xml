@@ -1069,7 +1069,7 @@
     <VddMax>3.6</VddMax>
     <VddErase>2.7</VddErase>
     <CalibrationWords>0</CalibrationWords>
-    <ChipEraseScript>247</ChipEraseScript>
+    <ChipEraseScript>292</ChipEraseScript>
     <ProgMemAddrSetScript>0</ProgMemAddrSetScript>
     <ProgMemAddrBytes>0</ProgMemAddrBytes>
     <ProgMemRdScript>246</ProgMemRdScript>
@@ -1936,5 +1936,25 @@
   <Comment>
   Wr x32 int timed 3ms. LdPrgMem(02), AdrInc(06), BeginPrg(08)
   </Comment>
+  </Scripts>
+  <Scripts>
+    <ScriptNumber>292</ScriptNumber>
+    <ScriptName>32MM_ChpEraseJT</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>8</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>43707</unsignedShort>
+      <unsignedShort>47879</unsignedShort>
+      <unsignedShort>43706</unsignedShort>
+      <unsignedShort>48124</unsignedShort>
+      <unsignedShort>43706</unsignedShort>
+      <unsignedShort>48080</unsignedShort>
+      <unsignedShort>43752</unsignedShort>
+      <unsignedShort>74</unsignedShort>
+    </Script>
+    <Comment>
+    Uses JTAG erase cmd, not PE SendCMD(MTAP_CMD) Xferdata(MCHP_ERASE) Xferdata(MCHP_DE_ASSERT_RST) P11 = 400ms
+    </Comment>
   </Scripts>
 </DeviceFile>

@@ -1112,60 +1112,34 @@ namespace PICkit2V2
             statusWinText += "UserID & Config... ";
             UpdateStatusWinText(statusWinText);
 
-            uint[] cfgBuf = new uint[10];
-            for (int i=0; i < 8; i++) cfgBuf[i] = 0xFFFFFFFF;
+            uint[] cfgBuf = new uint[8];
 
-            cfgBuf[0] = Pk2.DeviceBuffers.UserIDs[0] & 0xFF;
-            cfgBuf[0] |= (Pk2.DeviceBuffers.UserIDs[1] & 0xFF) << 8;
+            cfgBuf[0] = 0xFFFFFFFF;
+            cfgBuf[1] = 0xFFFF0000 & Pk2.DeviceBuffers.ConfigWords[0] << 16;
+            cfgBuf[1] |= (0x0000FFFF & Pk2.DeviceBuffers.ConfigWords[1]);
+            cfgBuf[2] = 0xFFFF0000 | Pk2.DeviceBuffers.ConfigWords[2];
+            cfgBuf[3] = 0xFFFF0000 | Pk2.DeviceBuffers.ConfigWords[3];
+            cfgBuf[4] = 0xFFFF0000 | Pk2.DeviceBuffers.ConfigWords[4];
+            cfgBuf[5] = 0xFFFF0000 | Pk2.DeviceBuffers.ConfigWords[5];
+            cfgBuf[6] = 0x0000FFFF | Pk2.DeviceBuffers.ConfigWords[6] << 16; //FSEC
+            cfgBuf[7] = 0xFFFFFFFF;
 
-            //timijk: quick fix for PIC32MX1xx/2xx
-            if (Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigAddr != Pk2.DevFile.PartsList[Pk2.ActivePart].UserIDAddr)
-            {
+            //cfgBuf[8] = 0x7FFFFFFF;  // FSIGN
+            //cfgBuf[9] = 0xFFFFFFFF;
 
-                cfgBuf[0] |= 0xFFFF0000;
+            //timijk 2017.02.08 : fix for PIC32MM
+            //if (codeProtect)
+            //{
+            //    cfgBuf[3] &= ~((uint)Pk2.DevFile.PartsList[Pk2.ActivePart].CPMask << 16);
+            //}
 
-                cfgBuf[1] = (Pk2.DeviceBuffers.ConfigWords[0] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[0]) | ((Pk2.DeviceBuffers.ConfigWords[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1]) << 16);
-                cfgBuf[1] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[0] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[0])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[1]) << 16);
-                cfgBuf[2] = (Pk2.DeviceBuffers.ConfigWords[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2]) | ((Pk2.DeviceBuffers.ConfigWords[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3]) << 16);
-                cfgBuf[2] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[2])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[3]) << 16);
-                cfgBuf[3] = (Pk2.DeviceBuffers.ConfigWords[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4]) | ((Pk2.DeviceBuffers.ConfigWords[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5]) << 16);
-                cfgBuf[3] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[4])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[5]) << 16);
-
-            }
-            else
-            {
-                cfgBuf[0] |= ((Pk2.DeviceBuffers.ConfigWords[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1]) << 16);
-                cfgBuf[0] |= ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[1] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[1]) << 16);
-
-                cfgBuf[1] = (Pk2.DeviceBuffers.ConfigWords[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2]) | ((Pk2.DeviceBuffers.ConfigWords[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3]) << 16);
-                cfgBuf[1] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[2] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[2])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[3] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[3]) << 16);
-
-                cfgBuf[2] = (Pk2.DeviceBuffers.ConfigWords[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4]) | ((Pk2.DeviceBuffers.ConfigWords[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5]) << 16);
-                cfgBuf[2] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[4] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[4])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[5] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[5]) << 16);
-
-                cfgBuf[3] = (Pk2.DeviceBuffers.ConfigWords[6] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[6]) | ((Pk2.DeviceBuffers.ConfigWords[7] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[7]) << 16);
-                cfgBuf[3] |= (~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[6] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[6])
-                            | ((~(uint)Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigMasks[7] & Pk2.DevFile.PartsList[Pk2.ActivePart].ConfigBlank[7]) << 16);
-
-            }
-
-            if (codeProtect)
-            {
-                cfgBuf[3] &= ~((uint)Pk2.DevFile.PartsList[Pk2.ActivePart].CPMask << 16);
-            }
-
-            uint startAddress = KONST.P32_BOOT_FLASH_START_ADDR + (uint)(bootMemP32 * 4);
+            uint startAddress = KONST.P32MM_CONFIG_START_ADDR; // KONST.P32_BOOT_FLASH_START_ADDR + (uint)(bootMemP32 * 4);
 
             PEProgramDoubleWord(startAddress,    cfgBuf[0], cfgBuf[1]);
             PEProgramDoubleWord(startAddress+8,  cfgBuf[2], cfgBuf[3]);
             PEProgramDoubleWord(startAddress+16, cfgBuf[4], cfgBuf[5]);
             PEProgramDoubleWord(startAddress+24, cfgBuf[6], cfgBuf[7]);
-            PEProgramDoubleWord(startAddress+32, cfgBuf[8], cfgBuf[9]);
+            //PEProgramDoubleWord(startAddress+32, cfgBuf[8], cfgBuf[9]);
 
             if (verifyWrite)
             {
@@ -1600,6 +1574,28 @@ namespace PICkit2V2
 
             return (int)(CurCRC & 0xFFFF);
 
+        }
+
+        public static int setConfigWords( uint index, uint data)
+        {
+            uint i, j;
+
+            if (index >= 4 && index <= 27)
+            {
+                i = index / 4;
+                j = index % 4;
+
+                if (i == 1 && j > 1) i = 0;
+                if (j > 1) data = data >> 16;
+
+                if (j == 0 || j == 2) Pk2.DeviceBuffers.ConfigWords[i] &= data;
+                else Pk2.DeviceBuffers.ConfigWords[i] &= data;
+
+                return (int)i;
+
+            }
+
+            return -1;
         }
 
     }
