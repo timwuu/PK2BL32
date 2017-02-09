@@ -2,6 +2,9 @@
 an adapter enables PICkit 2 with wireless programming ability
 
 ---------------------------
+2017.02.9
+Add support to PIC32MM0064GPL028
+
 2016.01.26
 
 v2013_06_15: the package created by MPLAB X 3.15
