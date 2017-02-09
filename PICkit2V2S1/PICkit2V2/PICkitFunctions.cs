@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 using USB = PICkit2V2.USB;
 using BT = PICkit2V2.BT;
 using KONST = PICkit2V2.Constants;
@@ -3076,8 +3077,11 @@ namespace PICkit2V2
         }
 
 
+        static DialogResult searchDeviceDialogresult = DialogResult.Yes; 
+
         private static bool searchDevice(int familyIndex, bool resetOnNoDevice, bool keepVddOn)
         {
+
             Program.mCmdLogScripts.WriteLine("[searchDevice:{0}]", familyIndex);
 
             //1.8V Min+
@@ -3087,7 +3091,7 @@ namespace PICkit2V2
             //if (familyIndex != 0x10) return false;
 
             //PIC32MM 
-            if (familyIndex != 0x14) return false;
+            //if (familyIndex != 0x14) return false;
 
             //PIC18F_K_ if (familyIndex != 0x06) return false;
             //XXyy timijk 2015.06.08 dsPIC33EP 
@@ -3104,6 +3108,22 @@ namespace PICkit2V2
 
             // Set VPP voltage by family
             float vpp = DevFile.Families[familyIndex].Vpp;
+
+            // timijk 2017.02.09 add Vpp/MCLR pin protection
+            if( vpp > 3.29)
+            {
+                string msg;
+
+                if (searchDeviceDialogresult != DialogResult.Yes) return false;
+
+                msg = "--- Checking Device ---\nFamily: " + DevFile.Families[familyIndex].FamilyName + "\nVpp: " + vpp.ToString() +"V";
+                msg += "\nDo you want to continue?";
+
+                searchDeviceDialogresult = MessageBox.Show( msg, "Vpp > 3.3", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+                if (searchDeviceDialogresult != DialogResult.Yes) return false;
+            }
+
             if ((vpp < 1) || (lvpEnabled && (DevFile.PartsList[ActivePart].LVPScript > 0)))
             { // When nominally zero, use VDD voltage
                 //UNLESS it's not an LVP script but a HV script (PIC24F-KA-)

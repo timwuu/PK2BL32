@@ -13,12 +13,13 @@ namespace PICkit2V2
         public static DelegateResetStatusBar ResetStatusBar;
         public static DelegateStepStatusBar StepStatusBar;
 
-        //timijk 2017.02.04
+        //timijk 2017.02.04 order changed to  [LOW],  [HIGH]
         private static uint[] pe_Loader = new uint[] {
                                                      //   0x0C00, 0x0C00,
                                                      //   0xED20, 0x0C00,  // turn on LED.B5
                                                      //   0x41A3, 0xBF80,  
                                                      //   0xF843, 0x2738,  // LATBSET
+                                                     // [LOW],  [HIGH]
                                                         0x41A3, 0xFF20,
                                                         0x41A5, 0xDEAD,
                                                         0x6A30, 0x6930,
@@ -376,7 +377,7 @@ namespace PICkit2V2
             commOffSet = 0;
             commandArrayp[commOffSet++] = KONST.CLR_DOWNLOAD_BUFFER;
             commandArrayp[commOffSet++] = KONST.DOWNLOAD_DATA;
-            commandArrayp[commOffSet++] = 5*4;
+            commandArrayp[commOffSet++] = 20;
 
             //timijk Step 3: Jump to 0xA000.0201
             commOffSet = addInstruction(commandArrayp, 0xa00041b9, commOffSet);
