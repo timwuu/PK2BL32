@@ -1133,13 +1133,15 @@ namespace PICkit2V2
             //    cfgBuf[3] &= ~((uint)Pk2.DevFile.PartsList[Pk2.ActivePart].CPMask << 16);
             //}
 
-            uint startAddress = KONST.P32MM_CONFIG_START_ADDR; // KONST.P32_BOOT_FLASH_START_ADDR + (uint)(bootMemP32 * 4);
+            uint startAddress = KONST.P32MM_CONFIG_START_ADDR; 
 
             PEProgramDoubleWord(startAddress,    cfgBuf[0], cfgBuf[1]);
-            PEProgramDoubleWord(startAddress+8,  cfgBuf[2], cfgBuf[3]);
             PEProgramDoubleWord(startAddress+16, cfgBuf[4], cfgBuf[5]);
             PEProgramDoubleWord(startAddress+24, cfgBuf[6], cfgBuf[7]);
-            //PEProgramDoubleWord(startAddress+32, cfgBuf[8], cfgBuf[9]);
+
+            // timijk 2017.02.08 Programming JTAGEN bits
+            // Do this at the last step...
+            PEProgramDoubleWord(startAddress + 8, cfgBuf[2], cfgBuf[3]);
 
             if (verifyWrite)
             {
@@ -1153,13 +1155,32 @@ namespace PICkit2V2
 
         private static void PEProgramDoubleWord(uint startAddress, uint data0, uint data1)
         {
+            bool sw2MTAP = false;
 
-            byte[] commandArrayc = new byte[26];
+            switch( startAddress)
+            {
+                case KONST.P32MM_FICD_ADDR:
+                case KONST.P32MM_ALT_FICD_ADDR:
+                case (KONST.P32MM_FICD_ADDR-4):
+                case (KONST.P32MM_ALT_FICD_ADDR-4):
+                    sw2MTAP = true;
+                    break;
+                default:
+                    break;
+            }
+
+            byte[] commandArrayc;
             int commOffSet = 0;
+
+            if( sw2MTAP) commandArrayc = new byte[26+6];
+            else commandArrayc = new byte[26];
 
             commandArrayc[commOffSet++] = KONST.CLR_UPLOAD_BUFFER;
             commandArrayc[commOffSet++] = KONST.EXECUTE_SCRIPT;
-            commandArrayc[commOffSet++] = 23;
+
+            if (sw2MTAP ) commandArrayc[commOffSet++] = 23+6;
+            else commandArrayc[commOffSet++] = 23;
+
             commandArrayc[commOffSet++] = KONST._JT2_SENDCMD;
             commandArrayc[commOffSet++] = 0x0E;     // ETAP_FASTDATA
             commandArrayc[commOffSet++] = KONST._JT2_XFRFASTDAT_LIT;
@@ -1182,10 +1203,22 @@ namespace PICkit2V2
             commandArrayc[commOffSet++] = (byte)((data1 >> 8) & 0xFF);
             commandArrayc[commOffSet++] = (byte)((data1 >> 16) & 0xFF);
             commandArrayc[commOffSet++] = (byte)((data1 >> 24) & 0xFF);
+
+            if(sw2MTAP)
+            {
+                commandArrayc[commOffSet++] = KONST._JT2_SENDCMD;
+                commandArrayc[commOffSet++] = 0x04;                 // MTAP_SW_MTAP
+                commandArrayc[commOffSet++] = KONST._DELAY_SHORT;  
+                commandArrayc[commOffSet++] = 0x18;                 // 24*21.3us ~500us > 400us
+                commandArrayc[commOffSet++] = KONST._JT2_SENDCMD;
+                commandArrayc[commOffSet++] = 0x05;                 // MTAP_SW_ETAP
+            }
+
             commandArrayc[commOffSet++] = KONST._JT2_WAIT_PE_RESP;
             Pk2.writeUSB(commandArrayc);
 
         }
+
 
         private static void PEProgramHeader(uint startAddress, uint lengthBytes)
         {
@@ -1436,7 +1469,7 @@ namespace PICkit2V2
             cfgBuf[4] = 0xFFFF0000;
             cfgBuf[5] = 0x00FFFFFF;
 
-            cfgBuf[0] |= Pk2.DeviceBuffers.ConfigWords[0] << 16 | Pk2.DeviceBuffers.ConfigWords[1];
+            cfgBuf[0] |= Pk2.DeviceBuffers.ConfigWords[0] << 16 | ( 0x0000FFFF & Pk2.DeviceBuffers.ConfigWords[1]);
             cfgBuf[1] |= Pk2.DeviceBuffers.ConfigWords[2];
             cfgBuf[2] |= Pk2.DeviceBuffers.ConfigWords[3];
             cfgBuf[3] |= Pk2.DeviceBuffers.ConfigWords[4];
@@ -1586,10 +1619,18 @@ namespace PICkit2V2
                 j = index % 4;
 
                 if (i == 1 && j > 1) i = 0;
-                if (j > 1) data = data >> 16;
+                if (j > 1) data = 0xFFFF0000 | (data >> 16);
 
-                if (j == 0 || j == 2) Pk2.DeviceBuffers.ConfigWords[i] &= data;
-                else Pk2.DeviceBuffers.ConfigWords[i] &= data;
+                if( j < 2)  
+                {
+                    if (j == 0) Pk2.DeviceBuffers.ConfigWords[i] &= data;
+                    else Pk2.DeviceBuffers.ConfigWords[i] &= data;
+                }
+                else if (i == 0 || i == 6) // USERID, CP
+                {
+                    if (j == 2) Pk2.DeviceBuffers.ConfigWords[i] &= data;
+                    else Pk2.DeviceBuffers.ConfigWords[i] &= data;
+                }
 
                 return (int)i;
 
