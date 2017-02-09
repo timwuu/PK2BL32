@@ -218,34 +218,30 @@ namespace PICkit2V2
                                     // User IDs section ---------------------------------------------------------
                                     if (userIDs > 0)
                                     {
-                                        if (Pk2.FamilyIsPIC32MM())
-                                        { }
-                                        else
+                                        if (byteAddress >= userIDAddr)
                                         {
-                                            if (byteAddress >= userIDAddr)
+                                            int uIDAddress = (int)(byteAddress - userIDAddr) / userIDMemBytes;
+                                            if (uIDAddress < userIDs)
                                             {
-                                                int uIDAddress = (int)(byteAddress - userIDAddr) / userIDMemBytes;
-                                                if (uIDAddress < userIDs)
-                                                {
-                                                    lineExceedsFlash = false;
-                                                    if (progMem)
-                                                    { // if importing program memory
-                                                        if (userIDMemBytes == bytesPerWord)
-                                                        { // same # hex bytes per EE location as ProgMem location
-                                                            Pk2.DeviceBuffers.UserIDs[uIDAddress] &= wordByte; // add byte.    
+                                                lineExceedsFlash = false;
+                                                if (progMem)
+                                                { // if importing program memory
+                                                    if (userIDMemBytes == bytesPerWord)
+                                                    { // same # hex bytes per EE location as ProgMem location
+                                                        Pk2.DeviceBuffers.UserIDs[uIDAddress] &= wordByte; // add byte.    
+                                                    }
+                                                    else
+                                                    {  // PIC18F/J, PIC24H/dsPIC33
+                                                        int uIDshift = (bytePosition / userIDMemBytes) * userIDMemBytes;
+                                                        for (int reshift = 0; reshift < uIDshift; reshift++)
+                                                        { // shift byte into proper position
+                                                            wordByte >>= 8;
                                                         }
-                                                        else
-                                                        {  // PIC18F/J, PIC24H/dsPIC33
-                                                            int uIDshift = (bytePosition / userIDMemBytes) * userIDMemBytes;
-                                                            for (int reshift = 0; reshift < uIDshift; reshift++)
-                                                            { // shift byte into proper position
-                                                                wordByte >>= 8;
-                                                            }
-                                                            Pk2.DeviceBuffers.UserIDs[uIDAddress] &= wordByte; // add byte. 
-                                                        }
+                                                        Pk2.DeviceBuffers.UserIDs[uIDAddress] &= wordByte; // add byte. 
                                                     }
                                                 }
                                             }
+
                                         }
                                     }
                                     // ignore data in hex file 
