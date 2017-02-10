@@ -1,9 +1,11 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using Pk2 = PICkit2V2.PICkitFunctions;
 using KONST = PICkit2V2.Constants;
+using HEXIO = PICkit2V2.ImportExportHex;
 
 namespace PICkit2V2
 {
@@ -1640,5 +1642,48 @@ namespace PICkit2V2
             return -1;
         }
 
+        {
+            //write segment address
+
+            uint configAddr = KONST.P32MM_CONFIG_START_ADDR;
+            uint[] cfgBuf = new uint[6];
+            cfgBuf[0] = 0x0000FF00;
+            cfgBuf[1] = 0xFFFFFF00;  //BlankMask
+            cfgBuf[2] = 0xFFFFFF00;
+            cfgBuf[3] = 0xFFFF0000;
+            cfgBuf[4] = 0xFFFF0000;
+            cfgBuf[5] = 0x00FFFFFF;
+
+            cfgBuf[0] |= Pk2.DeviceBuffers.ConfigWords[0] << 16 | (0x0000FFFF & Pk2.DeviceBuffers.ConfigWords[1]);
+            cfgBuf[1] |= Pk2.DeviceBuffers.ConfigWords[2];
+            cfgBuf[2] |= Pk2.DeviceBuffers.ConfigWords[3];
+            cfgBuf[3] |= Pk2.DeviceBuffers.ConfigWords[4];
+            cfgBuf[4] |= Pk2.DeviceBuffers.ConfigWords[5];
+            cfgBuf[5] |= Pk2.DeviceBuffers.ConfigWords[6] << 16;
+
+            string segmentLine = string.Format(":02000004{0:X4}", (configAddr >> 16));
+            segmentLine += string.Format("{0:X2}", HEXIO.computeChecksum(segmentLine));
+            hexFile.WriteLine(segmentLine);
+
+            uint fileAddress = configAddr & 0xFFFF;
+
+            string hexLine;
+            string hexWord;
+
+            for (uint i = 0; i< 6; i++)
+            {
+                hexLine = string.Format(":{0:X2}{1:X4}00", 4, fileAddress+4*(i+1));               
+                hexWord = string.Format("{0:X8}", cfgBuf[i]);
+                for (int j = 0; j < 4; j++)
+                {
+                    hexLine += hexWord.Substring(8 - ((j + 1) * 2), 2);
+                }
+
+                hexLine += string.Format("{0:X2}", HEXIO.computeChecksum(hexLine));
+                hexFile.WriteLine(hexLine);
+            }
+
+
+        }
     }
 }

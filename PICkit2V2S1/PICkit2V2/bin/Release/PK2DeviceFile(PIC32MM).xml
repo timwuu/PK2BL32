@@ -1037,7 +1037,7 @@
     <ConfigWords>7</ConfigWords>
     <ConfigAddr>532682688</ConfigAddr>
     <UserIDWords>2</UserIDWords>
-    <UserIDAddr>532682692</UserIDAddr>
+    <UserIDAddr>532682694</UserIDAddr>
     <BandGapMask>0</BandGapMask>
     <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <unsignedShort>65535</unsignedShort>

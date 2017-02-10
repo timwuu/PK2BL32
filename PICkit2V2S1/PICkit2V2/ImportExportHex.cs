@@ -544,7 +544,11 @@ namespace PICkit2V2
                 }
             }
             // Configuration Words ------------------------------------------------------------------------
-            if (progMem)
+            // timijk 2017.02.10
+            if (progMem && Pk2.FamilyIsPIC32MM())
+            {
+            }
+            else if (progMem)
             {
                 int cfgBytesPerWord = bytesPerWord;
                 if (Pk2.DevFile.Families[Pk2.GetActiveFamily()].BlankValue > 0xFFFFFF)
@@ -596,9 +600,10 @@ namespace PICkit2V2
                    }               
                 }
             }
-            
+
             // UserIDs ------------------------------------------------------------------------------------
-            if (progMem)
+            // timijk 2017.02.10 PIC32MM: UserID is done in Configuration Words
+            if (progMem && !Pk2.FamilyIsPIC32MM())
             {
                 int userIDs = Pk2.DevFile.PartsList[Pk2.ActivePart].UserIDWords;
                 arrayIndex = 0;
@@ -719,7 +724,7 @@ namespace PICkit2V2
             return true;
         }
         
-        private static byte computeChecksum(string fileLine)
+        public static byte computeChecksum(string fileLine)
         {
             int byteCount = Int32.Parse(fileLine.Substring(1, 2), System.Globalization.NumberStyles.HexNumber);
             if (fileLine.Length >= (9 + (2* byteCount)))
