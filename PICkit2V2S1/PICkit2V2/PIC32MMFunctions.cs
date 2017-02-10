@@ -1642,6 +1642,7 @@ namespace PICkit2V2
             return -1;
         }
 
+        public static void exportConfigHex(StreamWriter hexFile)
         {
             //write segment address
 

@@ -547,6 +547,7 @@ namespace PICkit2V2
             // timijk 2017.02.10
             if (progMem && Pk2.FamilyIsPIC32MM())
             {
+                PIC32MM.exportConfigHex(hexFile);   
             }
             else if (progMem)
             {
