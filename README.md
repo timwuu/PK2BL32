@@ -3,6 +3,7 @@ an adapter enables PICkit 2 with wireless programming ability
 
 ---------------------------
 2017.02.9
+
 Add support to PIC32MM0064GPL028
 
 2016.01.26

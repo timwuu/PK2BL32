@@ -353,14 +353,12 @@ namespace PICkit2V2
                 commOffSet = addInstruction(commandArrayp, ((pe_Loader[i+1] << 16) | 0x41A6), commOffSet);
                 commOffSet = addInstruction(commandArrayp, ((pe_Loader[i] << 16) | 0x50c6) , commOffSet);
                 commOffSet = addInstruction(commandArrayp, 0x6e42eb40, commOffSet);
-                // commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // two nops
                 // execute
                 commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
                 commandArrayp[commOffSet++] = 3;
                 commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
                 commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
                 commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-                //commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
                 for (; commOffSet < 64; commOffSet++)
                 {
                     commandArrayp[commOffSet] = KONST.END_OF_BUFFER;
@@ -385,8 +383,8 @@ namespace PICkit2V2
             commOffSet = addInstruction(commandArrayp, 0xa00041b9, commOffSet);
             commOffSet = addInstruction(commandArrayp, 0x02015339, commOffSet);  //<-- bug fix
             commOffSet = addInstruction(commandArrayp, 0x0c004599, commOffSet);
-            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // nops;nops; required
-            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // nops;nops; required
+            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // nop;nop; required
+            commOffSet = addInstruction(commandArrayp, 0x0c000c00, commOffSet);  // nop;nop; required
             // execute
             commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
             commandArrayp[commOffSet++] = 5+17; // 7;  // 20;
@@ -395,7 +393,7 @@ namespace PICkit2V2
             commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
             commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
             commandArrayp[commOffSet++] = KONST._JT2_XFERINST_BUF;
-            // STEP 7-A
+            // STEP 4-A
             commandArrayp[commOffSet++] = KONST._JT2_SENDCMD;
             commandArrayp[commOffSet++] = 0x05;                 // MTAP_SW_ETAP
             commandArrayp[commOffSet++] = KONST._JT2_SETMODE;
@@ -424,7 +422,7 @@ namespace PICkit2V2
                 return false;           // yes - abort
             }
 
-            // Download the PE itself (STEP 7-B)
+            // Download the PE itself (STEP 4-B)
             int numLoops = PIC32_PE.Length / 10;
             for (int i = 0, j = 0; i < numLoops; i++)
             { // download 10 at a time
@@ -500,7 +498,7 @@ namespace PICkit2V2
                 }
             }
 
-            // STEP 8 - Jump to PE
+            // STEP 5 - Jump to PE
             commOffSet = 0;
             commandArrayp[commOffSet++] = KONST.CLR_DOWNLOAD_BUFFER;
             commandArrayp[commOffSet++] = KONST.DOWNLOAD_DATA;

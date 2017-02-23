@@ -48,7 +48,7 @@ namespace PICkit2V2
             new cmd("ENTER_LEARN_MODE",4,false),//0xB5
             new cmd("EXIT_LEARN_MODE",0,false),//0xB6
             new cmd("ENABLE_PK2GO_MODE",2,false),//0xB7
-            new cmd("LOGIC_ANALYZER_GO",7,false),//0xB8
+            new cmd("LOGIC_ANALYZER_GO",8,false),//0xB8 ; timijk 2017.02.23 document error
             new cmd("COPY_RAM_UPLOAD",2,false) //0xB9 
         };
 
@@ -94,7 +94,7 @@ namespace PICkit2V2
             }
             else if (cmdID < 0x88)
             {
-                id1 = (byte)(cmdID - 0x88);
+                id1 = (byte)(cmdID - 0x80);  //bug fix
                 cmd1 = metaCmds[id1];
                 tw.Write(cmd1.name);
                 if (cmd1.plusN)
@@ -117,7 +117,7 @@ namespace PICkit2V2
                 tw.WriteLine("ERR");
                 return 0;
             }
-            else if (cmdID < 0xB9)
+            else if (cmdID <= 0xB9)  //timijk 2017.02.23 bug fix
             {
                 hasScriptCmd = ((cmdID == 0xA4) || (cmdID == 0xA5) || (cmdID == 0xA6));
                 id1 = (byte)(cmdID - 0xA0);

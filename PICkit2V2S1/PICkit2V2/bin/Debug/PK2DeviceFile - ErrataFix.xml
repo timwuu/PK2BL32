@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<DeviceFile>
+  <xs:schema id="DeviceFile" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="DeviceFile" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Info">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="VersionMajor" type="xs:int" minOccurs="0" />
+                <xs:element name="VersionMinor" type="xs:int" minOccurs="0" />
+                <xs:element name="VersionDot" type="xs:int" minOccurs="0" />
+                <xs:element name="VersionNotes" type="xs:string" minOccurs="0" />
+                <xs:element name="NumberFamilies" type="xs:int" minOccurs="0" />
+                <xs:element name="NumberParts" type="xs:int" minOccurs="0" />
+                <xs:element name="NumberScripts" type="xs:int" minOccurs="0" />
+                <xs:element name="Compatibility" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UNUSED1A" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UNUSED1B" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UNUSED2" type="xs:unsignedInt" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Families">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FamilyID" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="FamilyType" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="SearchPriority" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="FamilyName" type="xs:string" minOccurs="0" />
+                <xs:element name="ProgEntryScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgExitScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ReadDevIDScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DeviceIDMask" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="BlankValue" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="BytesPerLocation" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="AddressIncrement" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="PartDetect" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ProgEntryVPPScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UNUSED1" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEMemBytesPerWord" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="EEMemAddressIncrement" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UserIDHexBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UserIDBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemHexBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="EEMemHexBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemShift" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="TestMemoryStart" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="TestMemoryLength" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="Vpp" type="xs:float" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PartsList">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PartName" type="xs:string" minOccurs="0" />
+                <xs:element name="Family" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DeviceID" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ProgramMem" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="EEMem" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEAddr" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ConfigWords" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ConfigAddr" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="UserIDWords" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="UserIDAddr" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="BandGapMask" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ConfigMasks" msdata:DataType="System.UInt16[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                <xs:element name="ConfigBlank" msdata:DataType="System.UInt16[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                <xs:element name="CPMask" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="CPConfig" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="OSSCALSave" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IgnoreAddress" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="VddMin" type="xs:float" minOccurs="0" />
+                <xs:element name="VddMax" type="xs:float" minOccurs="0" />
+                <xs:element name="VddErase" type="xs:float" minOccurs="0" />
+                <xs:element name="CalibrationWords" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ChipEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemAddrSetScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemAddrBytes" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemRdWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERdPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERdLocations" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDRdPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigRdPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemWrWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemPanelBufs" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ProgMemPanelOffset" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="EEWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEWrLocations" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UserIDWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigWrPrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="OSCCALRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="OSCCALWrScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DPMask" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="WriteCfgOnErase" type="xs:boolean" minOccurs="0" />
+                <xs:element name="BlankCheckSkipUsrIDs" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IgnoreBytes" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ChipErasePrepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="BootFlash" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="Config9Mask" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="Config9Blank" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ProgMemEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EEMemEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ConfigMemEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="reserved1EraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="reserved2EraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="TestMemoryRdScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="TestMemoryRdWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERowEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="EERowEraseWords" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ExportToMPLAB" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DebugHaltScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugRunScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugStatusScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReadExecVerScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugSingleStepScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugBulkWrDataScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugBulkRdDataScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugWriteVectorScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReadVectorScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugRowEraseScript" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugRowEraseSize" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved5Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved6Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved7Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="DebugReserved8Script" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="LVPScript" type="xs:unsignedShort" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Scripts">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ScriptNumber" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="ScriptName" type="xs:string" minOccurs="0" />
+                <xs:element name="ScriptVersion" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="UNUSED1" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ScriptLength" type="xs:unsignedShort" minOccurs="0" />
+                <xs:element name="Script" msdata:DataType="System.UInt16[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                <xs:element name="Comment" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Info>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>61</VersionMinor>
+    <VersionDot>255</VersionDot>
+    <VersionNotes>
+      PIC32MM Errata Fix: Reset Module, Chip Erase
+    </VersionNotes>
+    <NumberFamilies>1</NumberFamilies>
+    <NumberParts>1</NumberParts>
+    <NumberScripts>7</NumberScripts>
+    <Compatibility>6</Compatibility>
+    <UNUSED1A>0</UNUSED1A>
+    <UNUSED1B>0</UNUSED1B>
+    <UNUSED2>0</UNUSED2>
+  </Info>
+  <Families>
+    <FamilyID>0</FamilyID>
+    <FamilyType>0</FamilyType>
+    <SearchPriority>0</SearchPriority>
+    <FamilyName>PIC32MM</FamilyName>
+    <ProgEntryScript>1</ProgEntryScript>
+    <ProgExitScript>2</ProgExitScript>
+    <ReadDevIDScript>3</ReadDevIDScript>
+    <DeviceIDMask>268431360</DeviceIDMask>
+    <BlankValue>4294967295</BlankValue>
+    <BytesPerLocation>4</BytesPerLocation>
+    <AddressIncrement>4</AddressIncrement>
+    <PartDetect>true</PartDetect>
+    <ProgEntryVPPScript>0</ProgEntryVPPScript>
+    <UNUSED1>0</UNUSED1>
+    <EEMemBytesPerWord>0</EEMemBytesPerWord>
+    <EEMemAddressIncrement>0</EEMemAddressIncrement>
+    <UserIDHexBytes>1</UserIDHexBytes>
+    <UserIDBytes>1</UserIDBytes>
+    <ProgMemHexBytes>4</ProgMemHexBytes>
+    <EEMemHexBytes>0</EEMemHexBytes>
+    <ProgMemShift>0</ProgMemShift>
+    <TestMemoryStart>0</TestMemoryStart>
+    <TestMemoryLength>0</TestMemoryLength>
+    <Vpp>0</Vpp>
+  </Families>
+  <PartsList>
+    <PartName>PIC32MM0064GPL028</PartName>
+    <Family>0</Family>
+    <DeviceID>112271443</DeviceID>
+    <ProgramMem>17856</ProgramMem>
+    <EEMem>0</EEMem>
+    <EEAddr>0</EEAddr>
+    <ConfigWords>7</ConfigWords>
+    <ConfigAddr>532682688</ConfigAddr>
+    <UserIDWords>2</UserIDWords>
+    <UserIDAddr>532682694</UserIDAddr>
+    <BandGapMask>0</BandGapMask>
+    <ConfigMasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>8</unsignedShort>
+      <unsignedShort>28</unsignedShort>
+      <unsignedShort>15</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>55255</unsignedShort>
+      <unsignedShort>32768</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigMasks>
+    <ConfigBlank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>65535</unsignedShort>
+      <unsignedShort>32767</unsignedShort>
+      <unsignedShort>0</unsignedShort>
+    </ConfigBlank>
+    <CPMask>32768</CPMask>
+    <CPConfig>7</CPConfig>
+    <OSSCALSave>false</OSSCALSave>
+    <IgnoreAddress>0</IgnoreAddress>
+    <VddMin>2.0</VddMin>
+    <VddMax>3.6</VddMax>
+    <VddErase>2.7</VddErase>
+    <CalibrationWords>0</CalibrationWords>
+    <ChipEraseScript>7</ChipEraseScript>
+    <ProgMemAddrSetScript>0</ProgMemAddrSetScript>
+    <ProgMemAddrBytes>0</ProgMemAddrBytes>
+    <ProgMemRdScript>4</ProgMemRdScript>
+    <ProgMemRdWords>32</ProgMemRdWords>
+    <EERdPrepScript>0</EERdPrepScript>
+    <EERdScript>0</EERdScript>
+    <EERdLocations>0</EERdLocations>
+    <UserIDRdPrepScript>0</UserIDRdPrepScript>
+    <UserIDRdScript>0</UserIDRdScript>
+    <ConfigRdPrepScript>0</ConfigRdPrepScript>
+    <ConfigRdScript>0</ConfigRdScript>
+    <ProgMemWrPrepScript>5</ProgMemWrPrepScript>
+    <ProgMemWrScript>6</ProgMemWrScript>
+    <ProgMemWrWords>128</ProgMemWrWords>
+    <ProgMemPanelBufs>0</ProgMemPanelBufs>
+    <ProgMemPanelOffset>0</ProgMemPanelOffset>
+    <EEWrPrepScript>0</EEWrPrepScript>
+    <EEWrScript>0</EEWrScript>
+    <EEWrLocations>0</EEWrLocations>
+    <UserIDWrPrepScript>0</UserIDWrPrepScript>
+    <UserIDWrScript>0</UserIDWrScript>
+    <ConfigWrPrepScript>0</ConfigWrPrepScript>
+    <ConfigWrScript>0</ConfigWrScript>
+    <OSCCALRdScript>0</OSCCALRdScript>
+    <OSCCALWrScript>0</OSCCALWrScript>
+    <DPMask>0</DPMask>
+    <WriteCfgOnErase>false</WriteCfgOnErase>
+    <BlankCheckSkipUsrIDs>false</BlankCheckSkipUsrIDs>
+    <IgnoreBytes>0</IgnoreBytes>
+    <ChipErasePrepScript>0</ChipErasePrepScript>
+    <BootFlash>1472</BootFlash>
+    <Config9Mask>0</Config9Mask>
+    <Config9Blank>0</Config9Blank>
+    <ProgMemEraseScript>0</ProgMemEraseScript>
+    <EEMemEraseScript>0</EEMemEraseScript>
+    <ConfigMemEraseScript>0</ConfigMemEraseScript>
+    <reserved1EraseScript>0</reserved1EraseScript>
+    <reserved2EraseScript>0</reserved2EraseScript>
+    <TestMemoryRdScript>0</TestMemoryRdScript>
+    <TestMemoryRdWords>0</TestMemoryRdWords>
+    <EERowEraseScript>0</EERowEraseScript>
+    <EERowEraseWords>0</EERowEraseWords>
+    <ExportToMPLAB>false</ExportToMPLAB>
+    <DebugHaltScript>0</DebugHaltScript>
+    <DebugRunScript>0</DebugRunScript>
+    <DebugStatusScript>0</DebugStatusScript>
+    <DebugReadExecVerScript>0</DebugReadExecVerScript>
+    <DebugSingleStepScript>0</DebugSingleStepScript>
+    <DebugBulkWrDataScript>0</DebugBulkWrDataScript>
+    <DebugBulkRdDataScript>0</DebugBulkRdDataScript>
+    <DebugWriteVectorScript>0</DebugWriteVectorScript>
+    <DebugReadVectorScript>0</DebugReadVectorScript>
+    <DebugRowEraseScript>0</DebugRowEraseScript>
+    <DebugRowEraseSize>0</DebugRowEraseSize>
+    <DebugReserved5Script>0</DebugReserved5Script>
+    <DebugReserved6Script>0</DebugReserved6Script>
+    <DebugReserved7Script>0</DebugReserved7Script>
+    <DebugReserved8Script>0</DebugReserved8Script>
+    <LVPScript>0</LVPScript>
+  </PartsList>
+  <Scripts>
+<ScriptNumber>1</ScriptNumber>
+<ScriptName>32MX_ProgEntry</ScriptName>
+<ScriptVersion>1</ScriptVersion>
+<UNUSED1>0</UNUSED1>
+<ScriptLength>39</ScriptLength>
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<unsignedShort>43770</unsignedShort>
+<unsignedShort>43767</unsignedShort>
+<unsignedShort>43769</unsignedShort>
+<unsignedShort>43765</unsignedShort>
+<unsignedShort>43763</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+<unsignedShort>43752</unsignedShort>
+<unsignedShort>20</unsignedShort>
+<unsignedShort>43766</unsignedShort>
+<unsignedShort>43771</unsignedShort>
+<unsignedShort>43771</unsignedShort>
+<unsignedShort>43770</unsignedShort>
+<unsignedShort>43770</unsignedShort>
+<unsignedShort>43767</unsignedShort>
+<unsignedShort>43751</unsignedShort>
+<unsignedShort>47</unsignedShort>
+<unsignedShort>43762</unsignedShort>
+<unsignedShort>48050</unsignedShort>
+<unsignedShort>43762</unsignedShort>
+<unsignedShort>48066</unsignedShort>
+<unsignedShort>43762</unsignedShort>
+<unsignedShort>47890</unsignedShort>
+<unsignedShort>43762</unsignedShort>
+<unsignedShort>47882</unsignedShort>
+<unsignedShort>43766</unsignedShort>
+<unsignedShort>43771</unsignedShort>
+<unsignedShort>43751</unsignedShort>
+<unsignedShort>235</unsignedShort>
+<unsignedShort>43763</unsignedShort>
+<unsignedShort>47874</unsignedShort>
+<unsignedShort>43708</unsignedShort>
+<unsignedShort>47878</unsignedShort>
+<unsignedShort>47903</unsignedShort>
+<unsignedShort>43707</unsignedShort>
+<unsignedShort>47876</unsignedShort>
+<unsignedShort>43707</unsignedShort>
+<unsignedShort>47879</unsignedShort>
+<unsignedShort>43706</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+</Script>
+<Comment>
+PIC32MX code sequence 4D434850 500us MCLR pulse Delay 1ms after first MCLR high pulse (P19) for RESET sync Delay 5ms PGD = inpt, SETMODE 6b011111 MCHP_STATUS byte in Upload buffer
+PIC32MM fix: (DELAY_SHORT 17) changed to (VPP_ON:43771 VPP_OFF:43770)
+</Comment>
+</Scripts>
+<Scripts>
+<ScriptNumber>2</ScriptNumber>
+<ScriptName>32MX_ProgExit1</ScriptName>
+<ScriptVersion>4</ScriptVersion>
+<UNUSED1>0</UNUSED1>
+<ScriptLength>15</ScriptLength>
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<unsignedShort>43708</unsignedShort>
+<unsignedShort>47877</unsignedShort>
+<unsignedShort>47903</unsignedShort>
+<unsignedShort>43770</unsignedShort>
+<unsignedShort>43767</unsignedShort>
+<unsignedShort>43768</unsignedShort>
+<unsignedShort>43763</unsignedShort>
+<unsignedShort>47878</unsignedShort>
+<unsignedShort>43763</unsignedShort>
+<unsignedShort>47874</unsignedShort>
+<unsignedShort>43763</unsignedShort>
+<unsignedShort>47875</unsignedShort>
+<unsignedShort>43752</unsignedShort>
+<unsignedShort>10</unsignedShort>
+<unsignedShort>43764</unsignedShort>
+</Script>
+<Comment>
+SetMode(5b11111) pulse PGC Ensure /MCLR for 50ms, leave /MCLR enabled.
+</Comment>
+</Scripts>
+<Scripts>
+<ScriptNumber>3</ScriptNumber>
+<ScriptName>32MX_DevIDRd</ScriptName>
+<ScriptVersion>0</ScriptVersion>
+<UNUSED1>0</UNUSED1>
+<ScriptLength>9</ScriptLength>
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<unsignedShort>43707</unsignedShort>
+<unsignedShort>47876</unsignedShort>
+<unsignedShort>43707</unsignedShort>
+<unsignedShort>47873</unsignedShort>
+<unsignedShort>43705</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+</Script>
+<Comment>
+SendCMD(MTAP_SW_MTAP) SendCMD(MTAP_IDCODE) XferData(32'h0)
+</Comment>
+</Scripts>
+<Scripts>
+<ScriptNumber>4</ScriptNumber>
+<ScriptName>32MX_PrgMemRd32</ScriptName>
+<ScriptVersion>0</ScriptVersion>
+<UNUSED1>0</UNUSED1>
+<ScriptLength>13</ScriptLength>
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<unsignedShort>43707</unsignedShort>
+<unsignedShort>47886</unsignedShort>
+<unsignedShort>43704</unsignedShort>
+<unsignedShort>32</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+<unsignedShort>47873</unsignedShort>
+<unsignedShort>47872</unsignedShort>
+<unsignedShort>43703</unsignedShort>
+<unsignedShort>43700</unsignedShort>
+<unsignedShort>43701</unsignedShort>
+<unsignedShort>43753</unsignedShort>
+<unsignedShort>47873</unsignedShort>
+<unsignedShort>31</unsignedShort>
+</Script>
+<Comment>
+Uses PE comamnd 01h to read 32 words. Needs 32-bit address in DL buffer. NOTE: PE resp is dumped
+</Comment>
+</Scripts>
+<Scripts>
+<ScriptNumber>5</ScriptNumber>
+<ScriptName>32MX_FlashWrPrep64</ScriptName>
+<ScriptVersion>0</ScriptVersion>
+<UNUSED1>0</UNUSED1>
+<ScriptLength>6</ScriptLength>
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<unsignedShort>43707</unsignedShort>
+<unsignedShort>47886</unsignedShort>
+<unsignedShort>43703</unsignedShort>
+<unsignedShort>43753</unsignedShort>
+<unsignedShort>47873</unsignedShort>
+<unsignedShort>63</unsignedShort>
+</Script>
+<Comment>
+SendCmd(ETAP_FASTDATA) downloads 64 words (256 bytes) to the PIC32, which is half a row. NOTE: does not include PE PROGRAM header.
+</Comment>
+</Scripts>
+<Scripts>
+<ScriptNumber>6</ScriptNumber>
+<ScriptName>32MX_FlashWr64</ScriptName>
+<ScriptVersion>0</ScriptVersion>
+<UNUSED1>0</UNUSED1>
+<ScriptLength>5</ScriptLength>
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<unsignedShort>43703</unsignedShort>
+<unsignedShort>43753</unsignedShort>
+<unsignedShort>47873</unsignedShort>
+<unsignedShort>63</unsignedShort>
+<unsignedShort>43699</unsignedShort>
+</Script>
+<Comment>
+downloads 64 words (256 bytes) to the PIC32, which is half a row (should be 2nd half) then gets PE response
+</Comment>
+</Scripts>
+  <Scripts>
+    <ScriptNumber>7</ScriptNumber>
+    <ScriptName>32MM_ChpEraseJT</ScriptName>
+    <ScriptVersion>0</ScriptVersion>
+    <UNUSED1>0</UNUSED1>
+    <ScriptLength>8</ScriptLength>
+    <Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <unsignedShort>43707</unsignedShort>
+      <unsignedShort>47879</unsignedShort>
+      <unsignedShort>43706</unsignedShort>
+      <unsignedShort>48124</unsignedShort>
+      <unsignedShort>43706</unsignedShort>
+      <unsignedShort>48080</unsignedShort>
+      <unsignedShort>43752</unsignedShort>
+      <unsignedShort>74</unsignedShort>
+    </Script>
+    <Comment>
+    Uses JTAG erase cmd, not PE SendCMD(MTAP_CMD) Xferdata(MCHP_ERASE) Xferdata(MCHP_DE_ASSERT_RST) P11 = 400ms
+    </Comment>
+  </Scripts>
+</DeviceFile>
