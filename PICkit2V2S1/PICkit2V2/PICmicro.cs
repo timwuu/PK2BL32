@@ -172,9 +172,80 @@ namespace PICkit2V2
             return true;
         }
 
+        /// <summary>
+        /// 2017.03.10 timijk turn on LED
+        /// </summary>
+        /// <param name="lst32ExecMemory"></param>
+        /// <returns></returns>
+
+        protected void _Turn_On_LED()
+        {
+            //TRISB 0x02C8
+            //LATB  0x02CC
+            //BCLR TRISB,#0x5; 
+            //1010.1001.010.ffff.ffff.ffff.1
+            //1010.1001.101.0001.0110.0100.0
+            //1010.1001.011.0001.0110.0100.1  //RB11
+            //0xA9.A2.C8
+            //BSET LATB,#0x5; 
+            //1010.1000.010.ffff.ffff.ffff.1
+            //1010.1000.101.0001.0110.0110.0
+            //0xA8.A2.CC
+
+            //BTG LATB,#0xB; 
+            //1010.1010.011.0001.0110.0110.1
+
+            int commOffSet = 0;
+            byte[] commandArrayp = new byte[64];
+            commandArrayp[commOffSet++] = KONST.EXECUTE_SCRIPT;
+            commandArrayp[commOffSet++] = 0; // fill in later
+            commandArrayp[commOffSet++] = KONST._COREINST24;
+            commandArrayp[commOffSet++] = 0x00;
+            commandArrayp[commOffSet++] = 0x02;
+            commandArrayp[commOffSet++] = 0x04;
+            commandArrayp[commOffSet++] = KONST._COREINST24;
+            commandArrayp[commOffSet++] = 0x00;
+            commandArrayp[commOffSet++] = 0x02;
+            commandArrayp[commOffSet++] = 0x04;
+            commandArrayp[commOffSet++] = KONST._NOP24;
+            commandArrayp[commOffSet++] = KONST._NOP24;
+            commandArrayp[commOffSet++] = KONST._NOP24;
+            commandArrayp[commOffSet++] = KONST._COREINST24;
+            commandArrayp[commOffSet++] = 0x00;
+            commandArrayp[commOffSet++] = 0x02;
+            commandArrayp[commOffSet++] = 0x04;
+            commandArrayp[commOffSet++] = KONST._NOP24;
+            commandArrayp[commOffSet++] = KONST._COREINST24; //BCLR TRISB,#0x5;
+            commandArrayp[commOffSet++] = 0xC8;
+            commandArrayp[commOffSet++] = 0xA2;
+            commandArrayp[commOffSet++] = 0xA9;
+            commandArrayp[commOffSet++] = KONST._NOP24;
+            commandArrayp[commOffSet++] = KONST._COREINST24; //BSET LATB,#0x5; 
+            commandArrayp[commOffSet++] = 0xCC;
+            commandArrayp[commOffSet++] = 0xA2;
+            commandArrayp[commOffSet++] = 0xA8;
+            commandArrayp[commOffSet++] = KONST._NOP24;
+            commandArrayp[commOffSet++] = KONST._COREINST24;  //Reset internal PC
+            commandArrayp[commOffSet++] = 0x00;
+            commandArrayp[commOffSet++] = 0x02;
+            commandArrayp[commOffSet++] = 0x04;
+            commandArrayp[commOffSet++] = KONST._NOP24;
+
+            commandArrayp[1] = (byte)(commOffSet - 2);  // script length
+            for (; commOffSet < 64; commOffSet++)
+            {
+                commandArrayp[commOffSet] = KONST.END_OF_BUFFER;
+            }
+            Pk2.writeUSB(commandArrayp);
+
+        }
+
         protected bool _PE_Connect( Int32 lst32ExecMemory)
         {
             Pk2.RunScript(KONST.PROG_ENTRY, 1);
+
+            //timijk 2017.03.10
+            //_Turn_On_LED();
 
             if (Pk2.DevFile.PartsList[Pk2.ActivePart].ProgMemWrPrepScript != 0)
             { // if prog mem address set script exists for this part
